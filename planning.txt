@@ -1,0 +1,14 @@
+Happy Hour Model:
+Type:
+Author:
+Name of place:
+Price:
+Distance:
+Deals / Times:
+Ambiance:
+Crowds:
+Rating:
+Address:
+Description:
+Website URL: 
+Comments: 
