@@ -24,7 +24,8 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
-    //this.restaurant = this.restaurant.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
+
   }
 
   componentDidMount () {
@@ -71,19 +72,17 @@ class App extends Component {
     console.log('successful login')
   }
 
-  // handleHappyHours (e) {
-  //   e.preventDefault()
-  //   axios.post('http://localhost:3002/happyhours', {email: this.state.email, password: this.state.password})
-  //   .then(response => {
-  //     localStorage.token = response.data.token
-  //     this.setState({
-  //       isLoggedIn: true
-  //     })
-  //   })
-  //   console.log(happyhours)
-  // }
-
+  handleLogOut() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+    console.log('logged out')
+  }
   render () {
+    console.log(this.state)
     const restaurant = {
       '_id': '5aba77a8952c454828cd34d5',
       'name': 'Post Pub',
@@ -96,7 +95,6 @@ class App extends Component {
       'distance': '1 block from GA',
       'deals': 'Friday after work is Absolute drinks for a reduced rate'
     }
-
     return (
       <div className='App'>
         <div className='Main'>
