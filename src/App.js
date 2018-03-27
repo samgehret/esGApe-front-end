@@ -23,6 +23,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
   }
   componentDidMount() {
     if (localStorage.token) {
@@ -69,7 +70,18 @@ class App extends Component {
     })
     console.log('successful login')
   }
+
+  handleLogOut() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+    console.log('logged out')
+  }
   render () {
+    console.log(this.state)
     const restaurant = {
       '_id': '5aba77a8952c454828cd34d5',
       'name': 'Post Pub',
@@ -82,11 +94,10 @@ class App extends Component {
       'distance': '1 block from GA',
       'deals': 'Friday after work is Absolute drinks for a reduced rate'
     }
-
     return (
       <div className='App'>
         <div className='Main'>
-        <Navbar />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
         {/* Add Switch? */}
           <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />}/>
           <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />}/>
