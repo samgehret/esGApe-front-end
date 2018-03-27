@@ -12,3 +12,12 @@ Address:
 Description:
 Website URL: 
 Comments: 
+
+
+Potential problems
+
+- How are we gonna deal with inevitable merge conflicts?
+Add lines as opposed to deleting them?
+
+- Code reviews?
+- materialize?
