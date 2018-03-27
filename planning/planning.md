@@ -73,3 +73,9 @@ Silver
 
 Gold
 - Users can upload images, and (someone?) hosts them
+
+
+GRANT TODO TUESDAY
+- add links to restaurants and bars in nav component
+- login, signup, and sign out redirect to home page
+- make it so that newrestaurant / bar includes createdBy

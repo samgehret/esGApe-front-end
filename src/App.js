@@ -7,6 +7,8 @@ import Restaurant from './components/Restaurant'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
+import NewRestaurantForm from './components/forms/NewRestaurantForm'
+import NewBarForm from './components/forms/NewBarForm'
 // dependencies not in create-react-app
 import { Route, Link, Redirect, Switch } from 'react-router-dom'
 import axios from 'axios'
@@ -18,12 +20,19 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
-      restaurant: []  // restaurant start from [] empty array
+// if I don't do it like this, I have to use nested state which is a pain
+      newRestaurantName: '',
+      newRestaurantAddress: '',
+      newRestaurantDescription:'',
+      newRestaurantCuisine:'',
+      newRestaurantDistance:'',
+      newRestaurantPrice:''
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleNewRestaurantInput = this.handleNewRestaurantInput.bind(this)
   }
   componentDidMount() {
     if (localStorage.token) {
@@ -53,6 +62,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
     })
+    window.location.replace('/')
     console.log('successful signup')
   })
 
@@ -61,13 +71,14 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault()
-    axios.post("http://localhost:3002/users/login", {email: this.state.email, password: this.state.password})
+    axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       this.setState({
         isLoggedIn: true
       })
     })
+    window.location.replace('/')
     console.log('successful login')
   }
 
@@ -78,7 +89,15 @@ class App extends Component {
       isLoggedIn: false
     })
     localStorage.clear()
+    window.location.replace('/')
     console.log('logged out')
+  }
+  handleNewRestaurantInput(e) {
+    e.preventDefault()
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    // axios.post('http://localhost:3002/lunchspots', )
   }
   render () {
     console.log(this.state)
@@ -101,6 +120,9 @@ class App extends Component {
         {/* Add Switch? */}
           <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />}/>
           <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />}/>
+          <Route path='/newrestaurant' render={() => <NewRestaurantForm handleNewRestaurantInput={this.handleNewRestaurantInput} />}/>
+          <Route path='/newbar' render={() => <NewBarForm />}/>
+          
           <div className='search'>
             <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
           </div>
