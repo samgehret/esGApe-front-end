@@ -12,7 +12,7 @@ import LunchSpots from './components/LunchSpots/LunchSpots'
 import Restaurants from './components/Restaurants'
 
 // dependencies not in create-react-app
-import { Route, Link, Switch } from 'react-router-dom' // Redirect,
+import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
 
 class App extends Component {
@@ -107,7 +107,7 @@ class App extends Component {
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
             <Route path='/lunchspots' render={() => <LunchSpots />} />
-            <Route path='/restaurants' render={() =><Restaurants />}/>
+            <Route path='/restaurants' render={() => <Restaurants />} />
             <Route
               path='/*'
               render={() => {
