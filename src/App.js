@@ -23,6 +23,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
   }
   componentDidMount() {
     if (localStorage.token) {
@@ -69,11 +70,22 @@ class App extends Component {
     })
     console.log('successful login')
   }
+
+  handleLogOut() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+    console.log('logged out')
+  }
   render () {
+    console.log(this.state)
     return (
       <div className='App'>
         <div className='Main'>
-        <Navbar />
+        <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
         {/* Add Switch? */}
           <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />}/>
           <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />}/>
