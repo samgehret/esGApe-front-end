@@ -7,7 +7,10 @@ import Restaurant from './components/Restaurant'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
+import Home from './components/Home/Home'
+import LunchSpots from './components/LunchSpots/LunchSpots'
 import Restaurants from './components/Restaurants'
+
 // dependencies not in create-react-app
 import { Route, Link, Switch } from 'react-router-dom' // Redirect,
 import axios from 'axios'
@@ -72,7 +75,7 @@ class App extends Component {
     console.log('successful login')
   }
 
-  handleLogOut() {
+  handleLogOut () {
     this.setState({
       email: '',
       password: '',
@@ -98,23 +101,28 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='Main'>
-          <nav>
-            <Link id='esGApe' to='/'><h1>esGApe</h1> </Link>
-            <Link id='1' to='/restaurant'>Lunch </Link>
-            <Link to='/restaurant'> Happy Hours</Link>
-            <Link to='/login'> Log In </Link>
-            <Link to='/signup'>Sign Up</Link>
-          </nav>
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
-            <Route path='/restaurant' render={() => <Restaurant restaurant={restaurant} />} />
-            <Route path='/restaurants' render={() => {
-              return (<Restaurants key={restaurant.name} />
-              )
-            }}
-            />
+            <Route path='/home' render={() => <Home />} />
+            <Route path='/lunchspots' render={() => <LunchSpots />} />
+            <Route path='/restaurants' render={() =><Restaurants />}/>
+            <Route
+              path='/*'
+              render={() => {
+                return (
+                  <Redirect to='/home' />
+                )
+              }}
+              />
           </Switch>
+          {/* <div className='search'>
+            <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
+          </div> */}
+          <div>
+            {/* <Restaurant restaurant={restaurant} /> */}
+          </div>
 
           {/* <div className='restaurant'>
             {this.state.restaurant.map((restaurant) => {
