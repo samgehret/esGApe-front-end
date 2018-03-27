@@ -9,8 +9,10 @@ import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
+import Restaurants from './components/Restaurants'
+
 // dependencies not in create-react-app
-import { Route, Link, Redirect, Switch } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom' // Redirect,
 import axios from 'axios'
 
 class App extends Component {
@@ -26,7 +28,9 @@ class App extends Component {
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+
   }
+
   componentDidMount () {
     if (localStorage.token) {
       this.setState({
@@ -103,6 +107,7 @@ class App extends Component {
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
             <Route path='/lunchspots' render={() => <LunchSpots />} />
+            <Route path='/restaurants' render={() =><Restaurants />}/>
             <Route
               path='/*'
               render={() => {
@@ -118,11 +123,13 @@ class App extends Component {
           <div>
             {/* <Restaurant restaurant={restaurant} /> */}
           </div>
+
           {/* <div className='restaurant'>
             {this.state.restaurant.map((restaurant) => {
               return <Restaurant key={restaurant.name} />
             })}
           </div> */}
+
         </div>
       </div>
     )
