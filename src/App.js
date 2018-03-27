@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// import logo from './logo.svg';
+import './App.css'
+import Restaurant from './components/Restaurant'
 
 class App extends Component {
-  render() {
+  constructor (props) {
+    super(props)
+    this.state = {
+      restaurant: []  // restaurant start from [] empty array
+    }
+  }
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='App'>
+        <div className='Main'>
+          <div className='search'>
+            <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
+          </div>
+          <div className='restaurant'>
+            {this.state.restaurant.map((restaurant) => {
+              return <Restaurant key={restaurant.name} />
+            })}
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
