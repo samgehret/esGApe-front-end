@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './HappyHour.css'
-import HappyHour from './HappyHour'
-
+import {Link} from 'react-router-dom'
+//import './Happyhours.css'
 
 class Happyhours extends Component {
   constructor (props) {
@@ -11,7 +10,6 @@ class Happyhours extends Component {
       bars: []
     }
   }
-
   componentDidMount () {
     axios.get('http://localhost:3002/happyhours')
       .then((res) => {
@@ -20,22 +18,25 @@ class Happyhours extends Component {
       })
   }
   render () {
-
-    var showBars = this.state.bars.map((bar, i) => {
+    let bars = this.state.bars.map((happyhour, i) => {
       return (
-       <div key={i}>
-            {/* <Restaurant info={bar} /> */}
-          <h1>Bars List</h1>
-        </div>
+        <Link to={`/happyhours/${happyhour._id}`} info={bars}>
+          <div className='bar' key={i}>
+            {happyhour.name}: {happyhour.distance}
+          </div>
+        </Link>
       )
-    }) 
+    })
 
     return (
-      <div>
-      {showBars}     
+      <div className='barscontainer'>
+        <h1> Bars Near GA </h1>
+        <div className='bars'>
+          {bars}
+        </div>
       </div>
     )
   }
 }
- 
+
 export default Happyhours
