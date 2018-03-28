@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 
 class NewLunchSpotForm extends Component {
-    // add state and function in here
+    constructor(props) {
+        super(props)
+        this.state = {
+            newLunchSpotName: '',
+            newLunchSpotAddress: '',
+            newLunchSpotDescription:'',
+            newLunchSpotCuisine:'',
+            newLunchSpotDistance:'',
+            newLunchSpotPrice:''
+            
+        }
+        this.handleNewLunchSpotInput = this.handleNewLunchSpotInput.bind(this)
+    }
+
+    handleNewLunchSpotInput(e) {
+        e.preventDefault()
+        this.setState({
+          [e.target.name]: e.target.value
+        })
+        // axios.post('http://localhost:3002/lunchspots', )
+      }
+
     render() {
         // need a way to determine which user created the post
         return (

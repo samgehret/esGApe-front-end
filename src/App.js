@@ -24,20 +24,11 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
-// if I don't do it like this, I have to use nested state which is a pain
-      newLunchSpotName: '',
-      newLunchSpotAddress: '',
-      newLunchSpotDescription:'',
-      newLunchSpotCuisine:'',
-      newLunchSpotDistance:'',
-      newLunchSpotPrice:''
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-    this.handleNewLunchSpotInput = this.handleNewLunchSpotInput.bind(this)
-
   }
 
   componentDidMount () {
@@ -96,13 +87,6 @@ class App extends Component {
     localStorage.clear()
     window.location.replace('/')
     console.log('logged out')
-  }
-  handleNewLunchSpotInput(e) {
-    e.preventDefault()
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-    // axios.post('http://localhost:3002/lunchspots', )
   }
   render () {
     console.log(this.state)
