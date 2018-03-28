@@ -20,6 +20,8 @@ class Navbar extends Component {
             return (
                 <div>
                     <nav>
+                        <Link className='nav-link' to='/happyhours'>Happy Hours</Link>
+                        <Link className='nav-link' to='/lunchspots'>Lunch Spots</Link>
                         <Link className='nav-link' to='/newlunchspot'>Add New Lunch Spot</Link>
                         <Link className='nav-link' to='/newhappyhour'>Add New Happy Hour</Link>
                         <input value="Log Out" type="submit" onClick={this.props.handleLogOut} />
