@@ -51,13 +51,19 @@ comments {
    content: String,
    createdAt: String
 }
-## GENERAL METHODOLOGY FOR GITHUB
+## NEW GENERAL METHODOLOGY FOR GITHUB
 
 - Do work in our local individual branch
-- Push to our remote individual branch
-- Pull request to 'develop' branch
-- Git pull to our local individual branch
+- git pull origin develop -> local develop
+- git checkout individual branch
+- git merge develop
+- fix merge conflicts in vscode
+- push local individual branch -> remote individual branch
+- pull request develop <-> remote individual branch
+- Done
 
+- in post req, date: date.now
+- schema, date: 
 ## MVP
 
 Bronze
@@ -75,12 +81,8 @@ Gold
 - Users can upload images, and (someone?) hosts them
 
 
-GRANT TODO TUESDAY
-- make it so that newrestaurant / bar includes createdBy
-- standardize models
 
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
-- Polish post requests
-    * Get email from app.js state, pass it down, set state to email?
+
 
