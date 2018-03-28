@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom'
 import './index.css';
 import App from './App';
-import Restaurant from './components/Restaurant'
+import HappyHour from './components/HappyHours/HappyHour'
 import registerServiceWorker from './registerServiceWorker';
 //import Hello from './components/Hello';
 

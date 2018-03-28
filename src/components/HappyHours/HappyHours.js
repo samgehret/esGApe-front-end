@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import Restaurant from './Restaurant'
-// import { Route, Link, Redirect, Switch } from 'react-router-dom'
+import './HappyHour.css'
+import HappyHour from './HappyHour'
 
-class Restaurants extends Component {
+
+class Happyhours extends Component {
   constructor (props) {
     super(props)
     this.state = {
       bars: []
     }
   }
+
   componentDidMount () {
     axios.get('http://localhost:3002/happyhours')
       .then((res) => {
@@ -18,21 +20,22 @@ class Restaurants extends Component {
       })
   }
   render () {
+
     var showBars = this.state.bars.map((bar, i) => {
       return (
-        <div key={i}>
+       <div key={i}>
             {/* <Restaurant info={bar} /> */}
           <h1>Bars List</h1>
         </div>
       )
-    })
+    }) 
 
     return (
       <div>
-        {showBars}
+      {showBars}     
       </div>
     )
   }
 }
-
-export default Restaurants
+ 
+export default Happyhours

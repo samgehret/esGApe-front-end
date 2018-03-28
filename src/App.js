@@ -3,14 +3,17 @@ import React, { Component } from 'react'
 // stylesheet
 import './App.css'
 // components
-import Restaurant from './components/Restaurant'
+import HappyHour from './components/HappyHours/HappyHour'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
+import NewLunchSpotForm from './components/forms/NewLunchSpotForm'
+import NewHappyHourForm from './components/forms/NewHappyHourForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
-import Restaurants from './components/Restaurants'
 import Marker from './components/Marker'
+import LunchSpot from './components/LunchSpots/LunchSpot'
+import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
@@ -32,7 +35,6 @@ class App extends Component {
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-
   }
 
   componentDidMount () {
@@ -65,6 +67,8 @@ class App extends Component {
       })
       console.log('successful signup')
     })
+    window.location.replace('/')
+    console.log('successful signup')
   }
 
   handleLogIn (e) {
@@ -76,6 +80,7 @@ class App extends Component {
         isLoggedIn: true
       })
     })
+    window.location.replace('/')
     console.log('successful login')
   }
 
@@ -86,6 +91,7 @@ class App extends Component {
       isLoggedIn: false
     })
     localStorage.clear()
+    window.location.replace('/')
     console.log('logged out')
   }
   render () {
@@ -107,6 +113,7 @@ class App extends Component {
       'deals': 'Friday after work is Absolute drinks for a reduced rate'
     }
     return (
+
       <div className='app'>
         <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
@@ -114,8 +121,11 @@ class App extends Component {
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/lunchspots' render={() => <LunchSpots />} />
-            <Route path='/restaurants' render={() => <Restaurants />} />
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
+            <Route path='/newbar' render={() => <NewHappyHourForm />}/>
+            <Route exact path='/lunchspots' render={() => <LunchSpots />} />
+            <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
+            <Route path='/happyhours' render={() => <HappyHours />} />
             <Route
               path='/*'
               render={() => {

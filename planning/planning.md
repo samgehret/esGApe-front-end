@@ -62,7 +62,6 @@ comments {
 
 Bronze
 - full CRUD for restaurants and bars
-- Map showing pinned restaurants and bars
 - Authentication - sign up, sign in, log out.
 - Posts have an author property, so you can only edit and delete your own posts.
 - Users can comment on posts
@@ -70,6 +69,17 @@ Bronze
 Silver
 - Ability to tag images, and filter / search based on those tags
 - Admin accounts
+- Map showing pinned restaurants and bars
 
 Gold
 - Users can upload images, and (someone?) hosts them
+
+
+GRANT TODO TUESDAY
+- make it so that newrestaurant / bar includes createdBy
+- standardize models
+
+GRANT TODO WEDNESDAY
+- Make it so a login failure doesn't redirect to homepage
+- Finish post requests
+
