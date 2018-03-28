@@ -41,6 +41,7 @@ class NewHappyHourForm extends Component {
     render() {
         return (
             <div>
+                <h1>Submit New Happy Hour</h1>
                 <form action='/happyhours' onSubmit={this.handleNewHappyHourSubmit}>
                     <label>Name</label>
                     <input onChange={this.handleNewHappyHourInput} type="text" name="newHappyHourName" />

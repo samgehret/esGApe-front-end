@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import LunchSpot from './LunchSpot'
-import { Route, Link, Redirect, Switch } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import './LunchSpots.css'
 
 class LunchSpots extends Component {
   constructor (props) {
@@ -20,37 +20,23 @@ class LunchSpots extends Component {
   render () {
     var lunchspots = this.state.lunchspots.map((lunchspot, i) => {
       return (
-        <div key={i}>
-          <h1>hello world</h1>
-        </div>
+        <Link to={`/lunchspots/${lunchspot._id}`} info={lunchspots}>
+          <div className='lunchspot' key={i}>
+            {lunchspot.name}: {lunchspot.distance}
+          </div>
+        </Link>
 
       )
     })
 
     return (
-      <div>
-        {lunchspots}
+      <div className='lunchcontainer'>
+        <h1> Lunch Spots Near GA </h1>
+        <div className='lunchspots'>
+          {lunchspots}
+        </div>
       </div>
     )
-
-    // if (this.state.lunchspots) {
-    //   let lunchspots = this.state.lunchspots
-    //   return (
-    //     <div>
-    //       {lunchspots.map((lunchspot) => {
-    //         return (
-    //           <Link to={`/lunchspots/${lunchspot._id}`}>{lunchspot.name}</Link>
-    //         )
-    //       })}
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div >
-    //       <p>waiting for api to execute...</p>
-    //     </div>
-    //   )
-    // }
   }
 }
 

@@ -27,9 +27,29 @@
   to { transform: rotate(360deg); }
 } */
 
+.app {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #2196F3;
+  padding: 20px;
+}
+.main {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  display: grid;
+  padding: 20px;
+}
+
+.map {
+  flex-grow: 1;
+  height: 100vh;
+  top: 0;
+  position: sticky;
+}
 nav {
     background: black;
-    color: white;
+    color: red;
     display: flex;
     justify-content: space-between;
     align-items: center;

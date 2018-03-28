@@ -42,6 +42,7 @@ class NewLunchSpotForm extends Component {
     render() {
         return (
             <div>
+                <h1>Submit New Lunch Spot</h1>
                 <form action='/lunchspots' onSubmit={this.handleNewLunchSpotSubmit}>
                     <label>Name</label>
                     <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotName" />

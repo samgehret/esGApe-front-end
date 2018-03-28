@@ -62,8 +62,6 @@ comments {
 - pull request develop <-> remote individual branch
 - Done
 
-- in post req, date: date.now
-- schema, date: 
 ## MVP
 
 Bronze
