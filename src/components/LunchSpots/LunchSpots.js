@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import LunchSpot from './LunchSpot'
 import { Route, Link, Redirect, Switch } from 'react-router-dom'
+import './LunchSpots.css'
 
 class LunchSpots extends Component {
   constructor (props) {
@@ -21,7 +22,8 @@ class LunchSpots extends Component {
     var lunchspots = this.state.lunchspots.map((lunchspot, i) => {
       return (
         <div key={i}>
-          <h1>hello world</h1>
+          <Link to={`/lunchspots/${lunchspot._id}`} info={lunchspots}> {lunchspot.name} </Link>
+          {/* {lunchspot.name} */}
         </div>
 
       )
@@ -29,28 +31,10 @@ class LunchSpots extends Component {
 
     return (
       <div>
+        <h1> LunchSpots Near GA </h1>
         {lunchspots}
       </div>
     )
-
-    // if (this.state.lunchspots) {
-    //   let lunchspots = this.state.lunchspots
-    //   return (
-    //     <div>
-    //       {lunchspots.map((lunchspot) => {
-    //         return (
-    //           <Link to={`/lunchspots/${lunchspot._id}`}>{lunchspot.name}</Link>
-    //         )
-    //       })}
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div >
-    //       <p>waiting for api to execute...</p>
-    //     </div>
-    //   )
-    // }
   }
 }
 

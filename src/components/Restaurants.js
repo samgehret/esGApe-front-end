@@ -25,7 +25,7 @@ class Restaurants extends Component {
     let showRestaurants = this.state.restaurants.map((restaurant, i) => {
       return (
         <div key={i}>
-          <Restaurant info = {restaurant} />
+          <Restaurant info={restaurant} />
         </div>
       )
     })
@@ -33,7 +33,7 @@ class Restaurants extends Component {
     // console.log(showRestaurants)
     return (
       <div>
-       {showRestaurants}
+        {showRestaurants}
       </div>
     )
   }
