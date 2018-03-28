@@ -6,8 +6,10 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <h1>Welcome to EsGApe!</h1>
-        <h2>What are you looking to do</h2>
+        <div className='title'>
+          <h1>Welcome to EsGApe!</h1>
+          <h3>What are you looking to do?</h3>
+        </div>
         <div className='container'>
           <Link to='/lunchspots'>
             <div className='clickbox'>
