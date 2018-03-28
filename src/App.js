@@ -65,10 +65,9 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
-      console.log('successful signup')
     })
+    localStorage.email = this.state.email
     window.location.replace('/')
-    console.log('successful signup')
   }
 
   handleLogIn (e) {
@@ -79,16 +78,17 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
+      localStorage.email = this.state.email
+
     })
     window.location.replace('/')
-    console.log('successful login')
   }
 
   handleLogOut () {
     this.setState({
       email: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false 
     })
     localStorage.clear()
     window.location.replace('/')
@@ -118,8 +118,8 @@ class App extends Component {
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newlunchspot' render={() => <NewLunchSpotForm handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
-            <Route path='/newbar' render={() => <NewHappyHourForm />}/>
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
+            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />}/>
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route exact path='/happyhours' render={() => <HappyHours />} />
