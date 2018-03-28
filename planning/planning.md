@@ -51,18 +51,21 @@ comments {
    content: String,
    createdAt: String
 }
-## GENERAL METHODOLOGY FOR GITHUB
+## NEW GENERAL METHODOLOGY FOR GITHUB
 
 - Do work in our local individual branch
-- Push to our remote individual branch
-- Pull request to 'develop' branch
-- Git pull to our local individual branch
+- git pull origin develop -> local develop
+- git checkout individual branch
+- git merge develop
+- fix merge conflicts in vscode
+- push local individual branch -> remote individual branch
+- pull request develop <-> remote individual branch
+- Done
 
 ## MVP
 
 Bronze
 - full CRUD for restaurants and bars
-- Map showing pinned restaurants and bars
 - Authentication - sign up, sign in, log out.
 - Posts have an author property, so you can only edit and delete your own posts.
 - Users can comment on posts
@@ -70,6 +73,14 @@ Bronze
 Silver
 - Ability to tag images, and filter / search based on those tags
 - Admin accounts
+- Map showing pinned restaurants and bars
 
 Gold
 - Users can upload images, and (someone?) hosts them
+
+
+
+GRANT TODO WEDNESDAY
+- Make it so a login failure / signup failure doesn't redirect to homepage
+
+

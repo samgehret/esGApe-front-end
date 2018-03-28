@@ -3,17 +3,23 @@ import React, { Component } from 'react'
 // stylesheet
 import './App.css'
 // components
-import Restaurant from './components/Restaurant'
+import HappyHour from './components/HappyHours/HappyHour'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
+import NewLunchSpotForm from './components/forms/NewLunchSpotForm'
+import NewHappyHourForm from './components/forms/NewHappyHourForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
-import Restaurants from './components/Restaurants'
+
+import LunchSpot from './components/LunchSpots/LunchSpot'
+import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
+import GoogleMapReact from 'google-map-react'
+
 
 class App extends Component {
   constructor (props) {
@@ -22,13 +28,13 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
+      selectedRestaurant: null,
       restaurant: []  // restaurant start from [] empty array
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-
   }
 
   componentDidMount () {
@@ -59,8 +65,9 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
-      console.log('successful signup')
     })
+    localStorage.email = this.state.email
+    window.location.replace('/')
   }
 
   handleLogIn (e) {
@@ -71,20 +78,24 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
+      localStorage.email = this.state.email
+
     })
-    console.log('successful login')
+    window.location.replace('/')
   }
 
   handleLogOut () {
     this.setState({
       email: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false 
     })
     localStorage.clear()
+    window.location.replace('/')
     console.log('logged out')
   }
   render () {
+  
     console.log(this.state)
     const restaurant = {
       '_id': '5aba77a8952c454828cd34d5',
@@ -99,15 +110,20 @@ class App extends Component {
       'deals': 'Friday after work is Absolute drinks for a reduced rate'
     }
     return (
-      <div className='App'>
-        <div className='Main'>
+
+      <div className='app'>
+        <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/lunchspots' render={() => <LunchSpots />} />
-            <Route path='/restaurants' render={() => <Restaurants />} />
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
+            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />}/>
+            <Route exact path='/lunchspots' render={() => <LunchSpots />} />
+            <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
+            <Route exact path='/happyhours' render={() => <HappyHours />} />
+            <Route exact path='/happyhours/:id' render={(props) => <HappyHour {...props} />} />
             <Route
               path='/*'
               render={() => {
@@ -117,19 +133,9 @@ class App extends Component {
               }}
               />
           </Switch>
-          {/* <div className='search'>
-            <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
-          </div> */}
-          <div>
-            {/* <Restaurant restaurant={restaurant} /> */}
-          </div>
-
-          {/* <div className='restaurant'>
-            {this.state.restaurant.map((restaurant) => {
-              return <Restaurant key={restaurant.name} />
-            })}
-          </div> */}
-
+        </div>
+        <div className='map'>
+           
         </div>
       </div>
     )
