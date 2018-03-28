@@ -9,22 +9,14 @@ class Restaurant extends Component {
       bar: this.props.info
     }
   }
-    render () {
-      return (
-        <div className='bar-preview'>
-          <h3>{this.state.bar.name}</h3>
-        </div>
-      )
-    }
-   
-  //   return (
-  //     <div>
-  //       {this.props.info.name}
-  //       </div>
-  //   )
-  // }
+
+  render () {
+    return (
+      <div className='bar-detail'>
+        <h3>{this.state.bar.name}</h3>
+      </div>
+    )
+  }
 }
 
 export default Restaurant
-
-

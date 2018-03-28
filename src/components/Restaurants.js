@@ -1,40 +1,35 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import './Restaurants.css'
-import Restaurant from './Restaurant'
+// import Restaurant from './Restaurant'
+// import { Route, Link, Redirect, Switch } from 'react-router-dom'
 
 class Restaurants extends Component {
   constructor (props) {
     super(props)
-
     this.state = {
-      happyhours: []
+      bars: []
     }
   }
-
   componentDidMount () {
     axios.get('http://localhost:3002/happyhours')
-            .then(response => {
-              this.setState({
-                restaurants: response.data
-              })
-            })
+      .then((res) => {
+        this.setState({bars: res.data})
+        console.log(res.data)
+      })
   }
-
   render () {
-    //const showRestaurants = this.state.restaurants.name + this.state.restaurants.address 
-    let showBars = this.state.happyhours.map((bar, i) => {
+    var showBars = this.state.bars.map((bar, i) => {
       return (
-        <div class='restaurants' key={i}>
-          <Restaurant info = {bar} />
+        <div key={i}>
+            {/* <Restaurant info={bar} /> */}
+          <h1>Bars List</h1>
         </div>
       )
-    }) 
-    // console.log('restauants')
-    // console.log(showRestaurants)
+    })
+
     return (
       <div>
-       {showBars}
+        {showBars}
       </div>
     )
   }
