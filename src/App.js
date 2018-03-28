@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import logo from './logo.svg';
-//stylesheet
+// stylesheet
 import './App.css'
 // components
 import Restaurant from './components/Restaurant'
@@ -9,8 +9,12 @@ import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
 import NewRestaurantForm from './components/forms/NewRestaurantForm'
 import NewBarForm from './components/forms/NewBarForm'
+import Home from './components/Home/Home'
+import LunchSpots from './components/LunchSpots/LunchSpots'
+import Restaurants from './components/Restaurants'
+
 // dependencies not in create-react-app
-import { Route, Link, Redirect, Switch } from 'react-router-dom'
+import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
 
 class App extends Component {
@@ -33,11 +37,13 @@ class App extends Component {
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
     this.handleNewRestaurantInput = this.handleNewRestaurantInput.bind(this)
+
   }
-  componentDidMount() {
+
+  componentDidMount () {
     if (localStorage.token) {
       this.setState({
-        isLoggedIn: true,
+        isLoggedIn: true
       })
     } else {
       this.setState({
@@ -46,30 +52,29 @@ class App extends Component {
     }
     console.log(this.state)
   }
-  
-  handleInput(e) {
+
+  handleInput (e) {
     this.setState({
-        [e.target.name]: e.target.value
+      [e.target.name]: e.target.value
     })
     console.log(this.state)
   }
 
-  handleSignUp(e) {
+  handleSignUp (e) {
     e.preventDefault()
     axios.post('http://localhost:3002/users/signup', {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       this.setState({
         isLoggedIn: true
+      })
+      console.log('successful signup')
     })
     window.location.replace('/')
     console.log('successful signup')
-  })
-
-  
   }
 
-  handleLogIn(e) {
+  handleLogIn (e) {
     e.preventDefault()
     axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
     .then(response => {
@@ -82,7 +87,7 @@ class App extends Component {
     console.log('successful login')
   }
 
-  handleLogOut() {
+  handleLogOut () {
     this.setState({
       email: '',
       password: '',
@@ -116,16 +121,28 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='Main'>
-        <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
-        {/* Add Switch? */}
-          <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />}/>
-          <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />}/>
-          <Route path='/newrestaurant' render={() => <NewRestaurantForm handleNewRestaurantInput={this.handleNewRestaurantInput} />}/>
-          <Route path='/newbar' render={() => <NewBarForm />}/>
-          
-          <div className='search'>
+
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
+          <Switch>
+            <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
+            <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
+            <Route path='/home' render={() => <Home />} />
+            <Route path='/newrestaurant' render={() => <NewRestaurantForm handleNewRestaurantInput={this.handleNewRestaurantInput} />}/>
+            <Route path='/newbar' render={() => <NewBarForm />}/>
+            <Route path='/lunchspots' render={() => <LunchSpots />} />
+            <Route path='/restaurants' render={() => <Restaurants />} />
+            <Route
+              path='/*'
+              render={() => {
+                return (
+                  <Redirect to='/home' />
+                )
+              }}
+              />
+          </Switch>
+          {/* <div className='search'>
             <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
-          </div>
+          </div> */}
         </div>
       </div>
     )
