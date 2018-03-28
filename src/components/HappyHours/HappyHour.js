@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './Restaurant.css'
+import './HappyHour.css'
 
-class Restaurant extends Component {
+class HappyHour extends Component {
   render () {
     // const restaurant = this.props.restaurant.name + ' $' + this.props.restaurant.drinkPrice + ' - ' + this.props.restaurant.distance
     // const address = this.props.restaurant.address
@@ -19,5 +19,5 @@ class Restaurant extends Component {
   }
 }
 
-export default Restaurant
+export default HappyHour
 

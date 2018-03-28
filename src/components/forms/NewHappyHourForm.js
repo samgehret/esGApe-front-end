@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class NewBarForm extends Component {
+class NewHappyHourForm extends Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class NewBarForm extends Component {
     }
 }
 
-export default NewBarForm;
+export default NewHappyHourForm;
