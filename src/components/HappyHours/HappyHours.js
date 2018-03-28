@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import Restaurant from './Restaurant'
+import HappyHour from './HappyHour'
 
-class Restaurants extends Component {
+class HappyHours extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      restaurants: []
+      happyhours: []
     }
   }
 
@@ -16,16 +16,16 @@ class Restaurants extends Component {
     axios.get('http://localhost:3002/happyhours')
             .then(response => {
               this.setState({
-                restaurants: response.data
+                happyhours: response.data
               })
             })
   }
 
   render () {
-    let showRestaurants = this.state.restaurants.map((restaurant, i) => {
+    let showHappyHours = this.state.happyhours.map((happyhour, i) => {
       return (
         <div key={i}>
-          <Restaurant info={restaurant} />
+          <HappyHour info = {happyhour} />
         </div>
       )
     })
@@ -33,10 +33,10 @@ class Restaurants extends Component {
     // console.log(showRestaurants)
     return (
       <div>
-        {showRestaurants}
+       {showHappyHours}
       </div>
     )
   }
 }
 
-export default Restaurants
+export default HappyHours

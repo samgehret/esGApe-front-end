@@ -3,16 +3,16 @@ import React, { Component } from 'react'
 // stylesheet
 import './App.css'
 // components
-import Restaurant from './components/Restaurant'
+import HappyHour from './components/HappyHours/HappyHour'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
-import NewRestaurantForm from './components/forms/NewRestaurantForm'
-import NewBarForm from './components/forms/NewBarForm'
+import NewLunchSpotForm from './components/forms/NewLunchSpotForm'
+import NewHappyHourForm from './components/forms/NewHappyHourForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
-import Restaurants from './components/Restaurants'
 import LunchSpot from './components/LunchSpots/LunchSpot'
+import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
@@ -25,19 +25,11 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
-// if I don't do it like this, I have to use nested state which is a pain
-      newRestaurantName: '',
-      newRestaurantAddress: '',
-      newRestaurantDescription: '',
-      newRestaurantCuisine: '',
-      newRestaurantDistance: '',
-      newRestaurantPrice: ''
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-    this.handleNewRestaurantInput = this.handleNewRestaurantInput.bind(this)
   }
 
   componentDidMount () {
@@ -97,13 +89,6 @@ class App extends Component {
     window.location.replace('/')
     console.log('logged out')
   }
-  handleNewRestaurantInput (e) {
-    e.preventDefault()
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-    // axios.post('http://localhost:3002/lunchspots', )
-  }
   render () {
     console.log(this.state)
     const restaurant = {
@@ -127,11 +112,11 @@ class App extends Component {
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newrestaurant' render={() => <NewRestaurantForm handleNewRestaurantInput={this.handleNewRestaurantInput} />} />
-            <Route path='/newbar' render={() => <NewBarForm />} />
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
+            <Route path='/newbar' render={() => <NewHappyHourForm />}/>
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
-            <Route path='/restaurants' render={() => <Restaurants />} />
+            <Route path='/happyhours' render={() => <HappyHours />} />
             <Route
               path='/*'
               render={() => {
