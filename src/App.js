@@ -10,10 +10,13 @@ import LoginForm from './components/forms/LoginForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
 import Restaurants from './components/Restaurants'
+import Marker from './components/Marker'
 
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
+import GoogleMapReact from 'google-map-react'
+
 
 class App extends Component {
   constructor (props) {
@@ -22,6 +25,7 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
+      selectedRestaurant: null,
       restaurant: []  // restaurant start from [] empty array
     }
     this.handleInput = this.handleInput.bind(this)
@@ -85,6 +89,10 @@ class App extends Component {
     console.log('logged out')
   }
   render () {
+    //center the map to the following coordinators
+    let center = {
+     lat: 38.904877, lng: -77.03621
+    }
     console.log(this.state)
     const restaurant = {
       '_id': '5aba77a8952c454828cd34d5',
@@ -99,8 +107,8 @@ class App extends Component {
       'deals': 'Friday after work is Absolute drinks for a reduced rate'
     }
     return (
-      <div className='App'>
-        <div className='Main'>
+      <div className='app'>
+        <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
@@ -117,19 +125,19 @@ class App extends Component {
               }}
               />
           </Switch>
-          {/* <div className='search'>
-            <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
-          </div> */}
-          <div>
-            {/* <Restaurant restaurant={restaurant} /> */}
-          </div>
-
-          {/* <div className='restaurant'>
-            {this.state.restaurant.map((restaurant) => {
-              return <Restaurant key={restaurant.name} />
-            })}
-          </div> */}
-
+        </div>
+        <div className='map'>
+            <GoogleMapReact
+              center={center}
+              // getting map closer to center increase the below number in ZOOM
+              zoom={13}>
+              {this.state.restaurant.map((restaurants) => { return <Marker 
+                  key={restaurants.name} lat={restaurants.lat} 
+                  lng={restaurants.lng} text={restaurants.address} 
+                  selected={restaurant === this.state.selectedRestaurant}
+                  />
+                })}
+            </GoogleMapReact>
         </div>
       </div>
     )

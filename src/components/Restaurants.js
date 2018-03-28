@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import './Restaurants.css'
 import Restaurant from './Restaurant'
 
 class Restaurants extends Component {
@@ -8,7 +8,7 @@ class Restaurants extends Component {
     super(props)
 
     this.state = {
-      restaurants: []
+      happyhours: []
     }
   }
 
@@ -22,18 +22,19 @@ class Restaurants extends Component {
   }
 
   render () {
-    let showRestaurants = this.state.restaurants.map((restaurant, i) => {
+    //const showRestaurants = this.state.restaurants.name + this.state.restaurants.address 
+    let showBars = this.state.happyhours.map((bar, i) => {
       return (
-        <div key={i}>
-          <Restaurant info = {restaurant} />
+        <div class='restaurants' key={i}>
+          <Restaurant info = {bar} />
         </div>
       )
-    })
+    }) 
     // console.log('restauants')
     // console.log(showRestaurants)
     return (
       <div>
-       {showRestaurants}
+       {showBars}
       </div>
     )
   }
