@@ -21,6 +21,7 @@ class Navbar extends Component {
             return (
                 <div>
                     <nav>
+                        <Link className='nav-link' to='/'><h3>esGApe</h3></Link>
                         <Link className='nav-link' to='/happyhours'>Happy Hours</Link>
                         <Link className='nav-link' to='/lunchspots'>Lunch Spots</Link>
                         <Link className='nav-link' to='/newlunchspot'>Add New Lunch Spot</Link>
