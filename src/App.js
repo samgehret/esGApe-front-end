@@ -11,7 +11,7 @@ import NewLunchSpotForm from './components/forms/NewLunchSpotForm'
 import NewHappyHourForm from './components/forms/NewHappyHourForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
-import Marker from './components/Marker'
+
 import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
 
@@ -65,10 +65,9 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
-      console.log('successful signup')
     })
+    localStorage.email = this.state.email
     window.location.replace('/')
-    console.log('successful signup')
   }
 
   handleLogIn (e) {
@@ -79,26 +78,24 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
+      localStorage.email = this.state.email
+
     })
     window.location.replace('/')
-    console.log('successful login')
   }
 
   handleLogOut () {
     this.setState({
       email: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false 
     })
     localStorage.clear()
     window.location.replace('/')
     console.log('logged out')
   }
   render () {
-    //center the map to the following coordinators
-    let center = {
-     lat: 38.904877, lng: -77.03621
-    }
+  
     console.log(this.state)
     const restaurant = {
       '_id': '5aba77a8952c454828cd34d5',
@@ -121,11 +118,12 @@ class App extends Component {
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newlunchspot' render={() => <NewLunchSpotForm handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
-            <Route path='/newbar' render={() => <NewHappyHourForm />}/>
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
+            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />}/>
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
-            <Route path='/happyhours' render={() => <HappyHours />} />
+            <Route exact path='/happyhours' render={() => <HappyHours />} />
+            <Route exact path='/happyhours/:id' render={(props) => <HappyHour {...props} />} />
             <Route
               path='/*'
               render={() => {
@@ -137,17 +135,7 @@ class App extends Component {
           </Switch>
         </div>
         <div className='map'>
-            <GoogleMapReact
-              center={center}
-              // getting map closer to center increase the below number in ZOOM
-              zoom={13}>
-              {this.state.restaurant.map((restaurants) => { return <Marker 
-                  key={restaurants.name} lat={restaurants.lat} 
-                  lng={restaurants.lng} text={restaurants.address} 
-                  selected={restaurant === this.state.selectedRestaurant}
-                  />
-                })}
-            </GoogleMapReact>
+           
         </div>
       </div>
     )
