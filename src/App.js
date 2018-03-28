@@ -7,6 +7,8 @@ import Restaurant from './components/Restaurant'
 import Navbar from './components/Navbar'
 import SignupForm from './components/forms/SignupForm'
 import LoginForm from './components/forms/LoginForm'
+import NewRestaurantForm from './components/forms/NewRestaurantForm'
+import NewBarForm from './components/forms/NewBarForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
 import Restaurants from './components/Restaurants'
@@ -22,12 +24,19 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
-      restaurant: []  // restaurant start from [] empty array
+// if I don't do it like this, I have to use nested state which is a pain
+      newRestaurantName: '',
+      newRestaurantAddress: '',
+      newRestaurantDescription:'',
+      newRestaurantCuisine:'',
+      newRestaurantDistance:'',
+      newRestaurantPrice:''
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleNewRestaurantInput = this.handleNewRestaurantInput.bind(this)
 
   }
 
@@ -61,6 +70,8 @@ class App extends Component {
       })
       console.log('successful signup')
     })
+    window.location.replace('/')
+    console.log('successful signup')
   }
 
   handleLogIn (e) {
@@ -72,6 +83,7 @@ class App extends Component {
         isLoggedIn: true
       })
     })
+    window.location.replace('/')
     console.log('successful login')
   }
 
@@ -82,7 +94,15 @@ class App extends Component {
       isLoggedIn: false
     })
     localStorage.clear()
+    window.location.replace('/')
     console.log('logged out')
+  }
+  handleNewRestaurantInput(e) {
+    e.preventDefault()
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+    // axios.post('http://localhost:3002/lunchspots', )
   }
   render () {
     console.log(this.state)
@@ -101,11 +121,14 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='Main'>
+
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
+            <Route path='/newrestaurant' render={() => <NewRestaurantForm handleNewRestaurantInput={this.handleNewRestaurantInput} />}/>
+            <Route path='/newbar' render={() => <NewBarForm />}/>
             <Route path='/lunchspots' render={() => <LunchSpots />} />
             <Route path='/restaurants' render={() => <Restaurants />} />
             <Route
@@ -120,16 +143,6 @@ class App extends Component {
           {/* <div className='search'>
             <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
           </div> */}
-          <div>
-            {/* <Restaurant restaurant={restaurant} /> */}
-          </div>
-
-          {/* <div className='restaurant'>
-            {this.state.restaurant.map((restaurant) => {
-              return <Restaurant key={restaurant.name} />
-            })}
-          </div> */}
-
         </div>
       </div>
     )

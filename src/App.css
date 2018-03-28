@@ -39,4 +39,7 @@ a {
   color: white;
   text-decoration: none;
 }
- 
+
+.nav-link  {
+  margin: 0px 10px;
+}

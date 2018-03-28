@@ -73,3 +73,9 @@ Silver
 
 Gold
 - Users can upload images, and (someone?) hosts them
+
+
+GRANT TODO TUESDAY
+- add links to restaurants and bars in nav component
+- make it so that newrestaurant / bar includes createdBy
+- standardize models
