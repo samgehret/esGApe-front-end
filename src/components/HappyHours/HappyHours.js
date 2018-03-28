@@ -18,11 +18,11 @@ class Happyhours extends Component {
       })
   }
   render () {
-    let bars = this.state.bars.map((happyhour, i) => {
+    let bars = this.state.bars.map((bar, i) => {
       return (
-        <Link to={`/happyhours/${happyhour._id}`} info={bars}>
+        <Link to={`/happyhours/${bar._id}`} info={bars}>
           <div className='bar' key={i}>
-            {happyhour.name}: {happyhour.distance}
+            {bar.name}: {bar.distance}
           </div>
         </Link>
       )
@@ -30,8 +30,8 @@ class Happyhours extends Component {
 
     return (
       <div className='barscontainer'>
-        <h1> Bars Near GA </h1>
-        <div className='bars'>
+        <h1>Awesome Happy Hour Places Around GA</h1>
+        <div className='barslist'>
           {bars}
         </div>
       </div>

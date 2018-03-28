@@ -55,7 +55,7 @@ class LunchSpot extends Component {
         <p>{this.state.info.address}</p>
 
         <p>{this.state.info.website}</p>
-        <p>{this.state.info.drinkPrice}</p>
+        <p>Avergae price ${this.state.info.drinkPrice}</p>
         <p>{this.state.info.ambiance}</p>
         <p>{this.state.info.desc}</p>
         <p>{this.state.info.description}</p>

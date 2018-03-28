@@ -9,7 +9,15 @@ a {
     align-items: center;
 }
 
-.bars {
+.barslist {
+    height: 50px;
+    width: 500px;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+    background: gray;
+}
+.bars1 {
     height: 50px;
     width: 500px;
     font-size: 30px;
