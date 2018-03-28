@@ -10,9 +10,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 10px;
 }
 
 .title {
     text-align: center;
+}
+
+img {
+    width: 250px;
+    height: 200px;
 }
