@@ -1,42 +1,41 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
+import './HappyHour.css'
 import HappyHour from './HappyHour'
 
-class HappyHours extends Component {
+
+class Happyhours extends Component {
   constructor (props) {
     super(props)
-
     this.state = {
-      happyhours: []
+      bars: []
     }
   }
 
   componentDidMount () {
     axios.get('http://localhost:3002/happyhours')
-            .then(response => {
-              this.setState({
-                happyhours: response.data
-              })
-            })
+      .then((res) => {
+        this.setState({bars: res.data})
+        console.log(res.data)
+      })
   }
-
   render () {
-    let showHappyHours = this.state.happyhours.map((happyhour, i) => {
+
+    var showBars = this.state.bars.map((bar, i) => {
       return (
-        <div key={i}>
-          <HappyHour info = {happyhour} />
+       <div key={i}>
+            {/* <Restaurant info={bar} /> */}
+          <h1>Bars List</h1>
         </div>
       )
-    })
-    // console.log('restauants')
-    // console.log(showRestaurants)
+    }) 
+
     return (
       <div>
-       {showHappyHours}
+      {showBars}     
       </div>
     )
   }
 }
-
-export default HappyHours
+ 
+export default Happyhours
