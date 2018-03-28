@@ -11,6 +11,7 @@ import NewLunchSpotForm from './components/forms/NewLunchSpotForm'
 import NewHappyHourForm from './components/forms/NewHappyHourForm'
 import Home from './components/Home/Home'
 import LunchSpots from './components/LunchSpots/LunchSpots'
+import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
@@ -113,7 +114,8 @@ class App extends Component {
             <Route path='/home' render={() => <Home />} />
             <Route path='/newlunchspot' render={() => <NewLunchSpotForm handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
             <Route path='/newbar' render={() => <NewHappyHourForm />}/>
-            <Route path='/lunchspots' render={() => <LunchSpots />} />
+            <Route exact path='/lunchspots' render={() => <LunchSpots />} />
+            <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route path='/happyhours' render={() => <HappyHours />} />
             <Route
               path='/*'
