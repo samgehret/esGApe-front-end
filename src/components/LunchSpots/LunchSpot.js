@@ -13,6 +13,7 @@ class LunchSpot extends Component {
     this.handleComment = this.handleComment.bind(this)
     this.submitComment = this.submitComment.bind(this)
     this.getInfo = this.getInfo.bind(this)
+    this.handleLunchSpotDelete = this.handleLunchSpotDelete.bind(this)
   }
   componentDidMount () {
     this.getInfo()
@@ -39,7 +40,13 @@ class LunchSpot extends Component {
     newComments.push({'commentText': this.state.comment})
     this.setState({comments: newComments})
   }
+  handleLunchSpotDelete() {
+    axios.delete(`http://localhost:3002/lunchspots/${this.state.info._id}`)
+    .then(window.location.replace('http://localhost:3000/lunchspots/'))
+  }
   render (props) {
+    console.log(this.state.info.author)
+    console.log(localStorage.email)
     var comments = this.state.comments.map((comment, i) => {
       return (
         <div >
@@ -62,6 +69,7 @@ class LunchSpot extends Component {
         <p>{this.state.info.crowds}</p>
         <p>{this.state.info.distance}</p>
         <p>{this.state.info.deals}</p>
+        <input onClick={this.handleLunchSpotDelete} type="submit" value="Delete" />
         <h3>Comments</h3>
         {comments}
         <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
