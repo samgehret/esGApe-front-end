@@ -27,13 +27,13 @@ class LunchSpot extends Component {
         <p>{this.state.info.address}</p>
 
         <p>{this.state.info.website}</p>
-        <p>{this.state.info.lunchPrice}</p>
-        <p>{this.state.info.description}</p>
-        <p>{this.state.info.distance}</p>
-        <p>{this.state.info.recommendedItems}</p>
-        <p>{this.state.info.foodType}</p>
-        <p>{this.state.info.crowds}</p>
+        <p>{this.state.info.drinkPrice}</p>
         <p>{this.state.info.ambiance}</p>
+        <p>{this.state.info.desc}</p>
+        <p>{this.state.info.description}</p>
+        <p>{this.state.info.crowds}</p>
+        <p>{this.state.info.distance}</p>
+        <p>{this.state.info.deals}</p>
       </div>
     )
   }
