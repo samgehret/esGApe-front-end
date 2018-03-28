@@ -9,6 +9,7 @@ class Navbar extends Component {
             return (
                 <div>
                     <nav>
+                        <Link className='nav-link' to='/'><h3>esGApe</h3></Link>
                         <Link className='nav-link' to='/signup'>Signup</Link>
                         <Link className='nav-link' to='/login'>Login</Link>
                         <Link className='nav-link' to='/happyhours'>Happy Hours</Link>
