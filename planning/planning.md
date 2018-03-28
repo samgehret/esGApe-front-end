@@ -80,6 +80,7 @@ GRANT TODO TUESDAY
 - standardize models
 
 GRANT TODO WEDNESDAY
-- Make it so a login failure doesn't redirect to homepage
-- Finish post requests
+- Make it so a login failure / signup failure doesn't redirect to homepage
+- Polish post requests
+    * Get email from app.js state, pass it down, set state to email?
 

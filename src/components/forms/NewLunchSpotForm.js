@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
 class NewLunchSpotForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            email:'',
             newLunchSpotName: '',
             newLunchSpotAddress: '',
+            newLunchSpotWebsite:'',
             newLunchSpotDescription:'',
-            newLunchSpotCuisine:'',
             newLunchSpotDistance:'',
-            newLunchSpotPrice:''
+            newLunchSpotFoodType:''
             
         }
         this.handleNewLunchSpotInput = this.handleNewLunchSpotInput.bind(this)
+        this.handleNewLunchSpotSubmit = this.handleNewLunchSpotSubmit.bind(this)
     }
 
     handleNewLunchSpotInput(e) {
@@ -20,29 +22,40 @@ class NewLunchSpotForm extends Component {
         this.setState({
           [e.target.name]: e.target.value
         })
-        // axios.post('http://localhost:3002/lunchspots', )
       }
-
+      handleNewLunchSpotSubmit() {
+        axios.post('http://localhost:3002/lunchspots', {
+            name: this.state.newLunchSpotName,
+            address: this.state.newLunchSpotAddress,
+            website: this.state.newLunchSpotWebsite,
+            description: this.state.newLunchSpotDescription,
+            distance: this.state.newLunchSpotDistance,
+            foodType: this.state.newLunchSpotFoodType,
+            author: this.state.email
+        })
+      }
+    componentWillMount() {
+        this.setState({
+            email: localStorage.email
+        })
+    }
     render() {
-        // need a way to determine which user created the post
         return (
             <div>
-                <form >
+                <form action='/lunchspots' onSubmit={this.handleNewLunchSpotSubmit}>
                     <label>Name</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotName" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotName" />
                     <label>Address</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotAddress" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotAddress" />
                     <label>Website</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotWebsite" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotWebsite" />
                     <label>Description</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotDescription" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotDescription" />
                     <label>Distance</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotDistance" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotDistance" />
                     <label>Food Type</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotfoodType" />
-                    <label>Price</label>
-                    <input onChange={this.props.handleNewLunchSpotInput} type="text" name="newLunchSpotlunchPrice" />
-                    <input onChange={this.props.handleNewLunchSpotInput} value="submit" type="submit" />
+                    <input onChange={this.handleNewLunchSpotInput} type="text" name="newLunchSpotFoodType" />
+                    <input onChange={this.handleNewLunchSpotInput} value="submit" type="submit" />
                 </form>
             </div>
         );
