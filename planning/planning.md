@@ -79,3 +79,12 @@ GRANT TODO TUESDAY
 - add links to restaurants and bars in nav component
 - make it so that newrestaurant / bar includes createdBy
 - standardize models
+
+GRANT TODO WEDNESDAY
+- Make it so a login failure doesn't redirect to homepage
+- Hide signup and login when isLoggedIn = true
+
+WHAT I DID
+- changed instance of 'restaurant' to 'lunchspot'
+- in the case of sam H's component, changed instance of 'restaurant' to 'happyhour'
+- Expect to get some residual bugs resulting from difference in naming conventions
