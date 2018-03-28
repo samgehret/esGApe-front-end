@@ -77,5 +77,5 @@ Gold
 
 GRANT TODO TUESDAY
 - add links to restaurants and bars in nav component
-- login, signup, and sign out redirect to home page
 - make it so that newrestaurant / bar includes createdBy
+- standardize models

@@ -126,14 +126,6 @@ class App extends Component {
           <div className='search'>
             <input type='text' placeholder='Search...' value={this.state.search} onChange={this.handleSearch} />
           </div>
-          <div>
-            <Restaurant restaurant={restaurant} />
-          </div>
-          {/* <div className='restaurant'>
-            {this.state.restaurant.map((restaurant) => {
-              return <Restaurant key={restaurant.name} />
-            })}
-          </div> */}
         </div>
       </div>
     )
