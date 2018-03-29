@@ -124,8 +124,7 @@ class App extends Component {
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route exact path='/happyhours' render={() => <HappyHours />} />
             <Route exact path='/happyhours/:id' render={(props) => <HappyHour {...props} />} />
-            <Route
-              path='/*'
+            <Route path='/*'
               render={() => {
                 return (
                   <Redirect to='/home' />
