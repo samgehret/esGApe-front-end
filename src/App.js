@@ -18,7 +18,7 @@ import HappyHours from './components/HappyHours/HappyHours'
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
-import GoogleMapReact from 'google-map-react'
+//import GoogleMapReact from 'google-map-react'
 
 
 class App extends Component {
@@ -27,9 +27,7 @@ class App extends Component {
     this.state = {
       email: '',
       password: '',
-      isLoggedIn: false,
-      selectedRestaurant: null,
-      restaurant: []  // restaurant start from [] empty array
+      isLoggedIn: false
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
@@ -97,18 +95,7 @@ class App extends Component {
   render () {
   
     console.log(this.state)
-    const restaurant = {
-      '_id': '5aba77a8952c454828cd34d5',
-      'name': 'Post Pub',
-      'address': '1422 L St NW, Washington, DC 20005',
-      'website': 'https://postpubdc.com/',
-      'drinkPrice': '7',
-      'ambiance': 'A dive bar with subpar service. Expect to wait a long time between server visits.',
-      'description': 'This is by far the closest bar to GA. Its a dive bar with poor service and random happy hour deals every night. Be careful on Friday night there are NO BEERS SPECIALS. Feel like drinks here should be less expensive than they are...',
-      'crowds': 'Fills up for lunch and for happy hour. Can be difficult to find a seat',
-      'distance': '1 block from GA',
-      'deals': 'Friday after work is Absolute drinks for a reduced rate'
-    }
+
     return (
 
       <div className='app'>
