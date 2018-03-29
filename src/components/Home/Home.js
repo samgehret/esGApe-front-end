@@ -1,27 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
-import styled from 'styled-components'
 
 class Home extends Component {
   render () {
-    const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    color: palevioletred;`
-    const Wrapper = styled.section`padding: 4em; background: papayawhip;`
-
+  
     return (
 
-      <div className='welcome page'>
-        <Wrapper>
-           <Title><h1>Welcome to EsGApe!</h1></Title>
-
-           <div className='title' bgcolor='#58b3ff'>
-          <h1></h1>
-          <Title><h3>What are you looking to do?</h3></Title>
-        </div>
-           <div className='container'>
+    <div className='welcome_page'>
+      <div className='greetings'>
+           <h1>Welcome to EsGApe!</h1>
+           <h3>What are you looking to do?</h3>
+      </div>
+      <div className='container'>
           <Link to='/lunchspots'>
             <div className='clickbox'>
               <div>
@@ -42,9 +33,8 @@ class Home extends Component {
               </div>
             </div>
           </Link>
-        </div>
-         </Wrapper>
       </div>
+    </div>
     )
   }
 }

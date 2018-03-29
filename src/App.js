@@ -16,7 +16,7 @@ import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
-import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
+import { Route, Link, Switch, Redirect } from 'react-router-dom' 
 import axios from 'axios'
 //import GoogleMapReact from 'google-map-react'
 
@@ -116,6 +116,7 @@ class App extends Component {
     console.log('logged out')
   }
   render () {
+ 
     return (
 
       <div className='app'>
@@ -140,8 +141,8 @@ class App extends Component {
               />
           </Switch>
         </div>
-        <div className='map' />
       </div>
+    
     )
   }
 }

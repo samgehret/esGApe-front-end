@@ -28,11 +28,13 @@
 } */
 
 .app {
+  background-color: #FBEFDB;
   display: grid;
   grid-template-columns: auto;
   background-color: #FDEFD8;
   padding: 20px;
 }
+
 .main {
   text-align: left;
   display: flex;
@@ -41,25 +43,18 @@
   padding: 20px;
 }
 
-.map {
-  flex-grow: 1;
-  height: 100vh;
-  top: 0;
-  position: sticky;
-}
 nav {
     background: black;
-    color: red;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;  
   }
-a {
+/* a {
   color: white;
   text-decoration: none;
-}
+} */
 
-.nav-link  {
+/* .nav-link  {
   margin: 0px 10px;
-}
+} */

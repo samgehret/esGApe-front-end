@@ -22,3 +22,10 @@ img {
     width: 250px;
     height: 200px;
 }
+
+.greetings {
+    text-align: center;
+    font-family: cursive, sans-serif;
+    color: palevioletred;
+}
+
