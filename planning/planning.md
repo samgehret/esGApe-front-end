@@ -84,6 +84,14 @@ make lat / long part of the model
 
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
+
+
+Styling
+- Input fields are too wide
+- 
+
+
+=======
 - buttons only show when author === localStorage.email
 - 
 
