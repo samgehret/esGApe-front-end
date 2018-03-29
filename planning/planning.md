@@ -11,46 +11,6 @@ Map: YES
 Who controls repo: Sam
 Formatting: Tabs, no semicolons, single quotes
 
-
-## RESTAURANT MODEL
-
-restaurantName: String,
-description: String,
-distanceFromGA: Number,
-avgMealPrice: Number,
-cuisine: String,
-createdAt: Number,
-address: String,
-rating: String,
-phoneNumber: String,
-hours: String,
-photoURL: String,
-comments: {
-   name: String,
-   content: String,
-   createdAt: String,
-}
-postAuthor: String
-
-## HAPPY HOUR / BAR MODEL
-barType: String,
-author: String,
-barName: String,
-avgBeerPrice: String,
-createdAt: Number,
-distanceFromGA: String,
-dealsAndTimes: String,
-ambiance: String,
-crowds: String,
-photoURL: String,
-rating: String,
-address: String,
-description: String,
-comments {
-   name: String,
-   content: String,
-   createdAt: String
-}
 ## NEW GENERAL METHODOLOGY FOR GITHUB
 
 - Do work in our local individual branch
