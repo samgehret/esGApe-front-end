@@ -11,7 +11,7 @@ class Navbar extends Component {
             return (
                 <div>
                     <nav className='nav'>
-                        <Link className='nav-link' to='/'><h3>esGApe</h3></Link>
+                        <Link className='nav-link' to='/'>esGApe</Link>
                         <Link className='nav-link' to='/signup'>Signup</Link>
                         <Link className='nav-link' to='/login'>Login</Link>
                         <Link className='nav-link' to='/lunchspots'>Lunch Spots</Link>
@@ -23,7 +23,7 @@ class Navbar extends Component {
             return (
                 <div>
                     <nav className='nav'>
-                        <Link className='nav-link' to='/'><h3>esGApe</h3></Link>
+                        <Link className='nav-link' to='/'>esGApe</Link>
                         <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
                         <Link className='nav-link wine' to='/happyhours'>Happy Hours</Link>
                         <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
