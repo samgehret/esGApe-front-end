@@ -14,7 +14,12 @@ import LunchSpots from './components/LunchSpots/LunchSpots'
 
 import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
-import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' // Redirect,
+
+// dependencies not in create-react-app
+
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' 
+
+
 import axios from 'axios'
 
 class App extends Component {
@@ -99,6 +104,7 @@ class App extends Component {
     window.location.replace('/')
   }
   render () {
+ 
     return (
 
       <div className='app'>
@@ -123,8 +129,8 @@ class App extends Component {
               />
           </Switch>
         </div>
-        <div className='map' />
       </div>
+    
     )
   }
 }

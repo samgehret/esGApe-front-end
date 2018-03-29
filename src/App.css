@@ -1,6 +1,42 @@
-body {
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes .main {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
+
+.app {
+  background-color: #FBEFDB;
+  display: grid;
+  grid-template-columns: auto;
+}
+  body {
   background-color: #FDEFD8;
 }
+
 .main {
   text-align: left;
   display: flex;
@@ -9,12 +45,12 @@ body {
 
 nav {
     background: black;
-    color: red;
-    display: flex;
+    display: inline;
     justify-content: space-between;
     align-items: center;
-    
-  }
+    padding: 0 20px;  
+  } 
+
 a {
   color: white;
   text-decoration: none;
@@ -23,3 +59,4 @@ a {
   white-space: nowrap;
   margin: 0
 }
+
