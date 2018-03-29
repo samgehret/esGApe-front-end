@@ -6,15 +6,17 @@ import LunchSpots from './components/LunchSpots'
 
 class Maps extends Component {
   render () {
-          // center the map to the following coordinators
-    let center = {
-      lat: 38.904877, lng: -77.03621
-    }
+         
     let restaurant = {
         HappyHours = null,
         LunchSpots = null
     }
     return (
+      <h1>Map Map Map</h1>
+      <p>{this.state.info.address}</p>
+
+      https://maps.googleapis.com/maps/api/geocode/json?address=high+st+hasting&components=country:GB&key=YOUR_API_KEY
+
       <div className='GoogleMapReact'>
         <GoogleMapReact
           center={center}

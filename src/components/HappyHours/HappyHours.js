@@ -30,7 +30,7 @@ class Happyhours extends Component {
 
     return (
       <div className='barscontainer'>
-        <h1>Awesome Happy Hour Places Around GA</h1>
+        <h1>Happy Hour Near GA</h1>
         <div className='barslist'>
           {bars}
         </div>
