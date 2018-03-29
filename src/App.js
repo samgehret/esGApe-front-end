@@ -116,12 +116,6 @@ class App extends Component {
     console.log('logged out')
   }
   render () {
-<<<<<<< HEAD
-=======
-  
-    console.log(this.state)
-
->>>>>>> develop
     return (
 
       <div className='app'>
