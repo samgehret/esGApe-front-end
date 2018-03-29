@@ -22,7 +22,7 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+@keyframes .main {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 } */
@@ -49,12 +49,5 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;  
-  }
-/* a {
-  color: white;
-  text-decoration: none;
-} */
-
-/* .nav-link  {
-  margin: 0px 10px;
-} */
+  } 
+  
