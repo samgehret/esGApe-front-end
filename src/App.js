@@ -73,7 +73,7 @@ class App extends Component {
       if (err.response.status === 401) {
         this.setState({errorSignup: 'Sorry bro, email already taken.'})
       }
-      if (err.response.status === 401) {
+      if (err.response.status === 404) {
         this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
       }
     })

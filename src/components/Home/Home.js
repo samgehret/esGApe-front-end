@@ -15,35 +15,35 @@ class Home extends Component {
 
       <div className='welcome page'>
         <Wrapper>
-           <Title><h1>Welcome to EsGApe!</h1></Title>
+          <Title><h1>Welcome to EsGApe!</h1></Title>
 
-           <div className='title' bgcolor='#58b3ff'>
-          <h1></h1>
-          <Title><h3>What are you looking to do?</h3></Title>
-        </div>
-           <div className='container'>
-          <Link to='/lunchspots'>
-            <div className='clickbox'>
-              <div>
-                <h3>Eat</h3>
+          <div className='title' bgcolor='#58b3ff'>
+            <h1 />
+            <Title><h3>What are you looking to do?</h3></Title>
+          </div>
+          <div className='container'>
+            <Link to='/lunchspots'>
+              <div className='clickbox'>
+                <div>
+                  <h3>Eat</h3>
+                </div>
+                <div>
+                  <img src='https://i.giphy.com/media/eSQKNSmg07dHq/200.gif' />
+                </div>
               </div>
-              <div>
-                <img src='https://i.giphy.com/media/eSQKNSmg07dHq/200.gif' />
+            </Link>
+            <Link to='/happyhours'>
+              <div className='clickbox'>
+                <div>
+                  <h3>Drink</h3>
+                </div>
+                <div>
+                  <img src='https://i.giphy.com/media/IRoz0jP2Pr26I/giphy.webp' />
+                </div>
               </div>
-            </div>
-          </Link>
-          <Link to='/happyhours'>
-            <div className='clickbox'>
-              <div>
-                <h3>Drink</h3>
-              </div>
-              <div>
-                <img src='https://i.giphy.com/media/IRoz0jP2Pr26I/giphy.webp' />
-              </div>
-            </div>
-          </Link>
-        </div>
-         </Wrapper>
+            </Link>
+          </div>
+        </Wrapper>
       </div>
     )
   }
