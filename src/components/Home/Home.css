@@ -21,4 +21,6 @@
 img {
     width: 250px;
     height: 200px;
+    border-radius: 50%;
+    shape-outside: circle(50%);
 }
