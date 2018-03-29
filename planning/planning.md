@@ -83,4 +83,8 @@ Gold
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
 
+Styling
+- Input fields are too wide
+- 
+
 
