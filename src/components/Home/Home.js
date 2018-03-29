@@ -6,6 +6,7 @@ class Home extends Component {
   render () {
     return (
 
+
       <div className='welcome_page'>
       <div className='greetings'>
         <h1>Welcome to esGApe!</h1>
@@ -32,6 +33,7 @@ class Home extends Component {
                 </div>
               </div>
             </Link>
+        </div>
       </div>
     </div>
     )

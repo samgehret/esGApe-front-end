@@ -27,5 +27,7 @@ img {
     text-align: center;
     font-family: cursive, sans-serif;
     color: palevioletred;
+    border-radius: 50%;
+    shape-outside: circle(50%);
 }
 

@@ -66,11 +66,12 @@ TODO OVERALL
 - After deployment, check URL's to make sure they all work
 - sort comments and lunchspot / happyhour list view in reverse order
 GRANT TODO THURDAY
-- Fix URL redirects through surge
-- Edit on show page
+- Fix URL redirects through surge (if they happen?)
+- Round Images on front page.
+- icons in navbar
 
 
-EDIT PROBLEM
-- router.put not going through. doesn't work on postman
-- weird URL getting huge?
-- 
+KNOWN BUGS
+- Login page not redirecting on successful login
+- Comment fields not emptying after successful comment post
+- Edit and Delete not being hidden.
