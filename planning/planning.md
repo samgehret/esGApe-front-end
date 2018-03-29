@@ -78,9 +78,31 @@ Silver
 Gold
 - Users can upload images, and (someone?) hosts them
 
+make lat / long part of the model
+
 
 
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
+- buttons only show when author === localStorage.email
+- 
 
 
+TODO OVERALL
+- Make it so that 'website' renders a clickable URL on show view
+- Make stuff look better
+- Logo in top left
+- make Navbar stretch to whole page
+- color on form text
+- Animation on mouseover for nav items
+- After deployment, check URL's to make sure they all work
+- sort comments and lunchspot / happyhour list view in reverse order
+GRANT TODO THURDAY
+- Fix URL redirects through surge
+- Edit on show page
+
+
+EDIT PROBLEM
+- router.put not going through. doesn't work on postman
+- weird URL getting huge?
+- 
