@@ -22,3 +22,9 @@
   nav a:hover {
     background: #282C34;
   }
+
+  nav img {
+    height: 50px;
+    width: 50px;
+    margin: -30px;
+  }

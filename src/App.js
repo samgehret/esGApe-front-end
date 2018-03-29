@@ -63,20 +63,20 @@ class App extends Component {
       this.setState({
         error: null,
         isLoggedIn: true
-      })
-      window.location.replace('/')
-    }).catch(err => {
-      console.log(err)
-      if (err.response.status === 400) {
-        this.setState({errorSignup: 'Sorry bro, all fields are required'})
-      }
-      if (err.response.status === 401) {
-        this.setState({errorSignup: 'Sorry bro, email already taken.'})
-      }
-      if (err.response.status === 401) {
-        this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
-      }
+      }).then((props)=> this.props.history.push('/home'))
     })
+    // .catch(err => {
+    //   console.log(err)
+    //   if (err.response.status === 400) {
+    //     this.setState({errorSignup: 'Sorry bro, all fields are required'})
+    //   }
+    //   if (err.response.status === 401) {
+    //     this.setState({errorSignup: 'Sorry bro, email already taken.'})
+    //   }
+    //   if (err.response.status === 401) {
+    //     this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
+    //   }
+    // })
   }
 
   handleLogIn (e) {
@@ -85,7 +85,7 @@ class App extends Component {
     .then(response => {
       localStorage.token = response.data.token
       this.setState({
-        error: null,
+        // error: null,
         isLoggedIn: true
       })
       localStorage.email = this.state.email
@@ -122,7 +122,7 @@ class App extends Component {
         <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
-            <Route path='/signup' render={() => <SignupForm error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
+            <Route path='/signup' render={(props) => <SignupForm {...props} error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm error={this.state.errorLogin} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
             <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
