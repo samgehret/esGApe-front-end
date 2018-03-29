@@ -11,46 +11,6 @@ Map: YES
 Who controls repo: Sam
 Formatting: Tabs, no semicolons, single quotes
 
-
-## RESTAURANT MODEL
-
-restaurantName: String,
-description: String,
-distanceFromGA: Number,
-avgMealPrice: Number,
-cuisine: String,
-createdAt: Number,
-address: String,
-rating: String,
-phoneNumber: String,
-hours: String,
-photoURL: String,
-comments: {
-   name: String,
-   content: String,
-   createdAt: String,
-}
-postAuthor: String
-
-## HAPPY HOUR / BAR MODEL
-barType: String,
-author: String,
-barName: String,
-avgBeerPrice: String,
-createdAt: Number,
-distanceFromGA: String,
-dealsAndTimes: String,
-ambiance: String,
-crowds: String,
-photoURL: String,
-rating: String,
-address: String,
-description: String,
-comments {
-   name: String,
-   content: String,
-   createdAt: String
-}
 ## NEW GENERAL METHODOLOGY FOR GITHUB
 
 - Do work in our local individual branch
@@ -78,9 +38,39 @@ Silver
 Gold
 - Users can upload images, and (someone?) hosts them
 
+make lat / long part of the model
+
 
 
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
 
 
+Styling
+- Input fields are too wide
+- 
+
+
+=======
+- buttons only show when author === localStorage.email
+- 
+
+
+TODO OVERALL
+- Make it so that 'website' renders a clickable URL on show view
+- Make stuff look better
+- Logo in top left
+- make Navbar stretch to whole page
+- color on form text
+- Animation on mouseover for nav items
+- After deployment, check URL's to make sure they all work
+- sort comments and lunchspot / happyhour list view in reverse order
+GRANT TODO THURDAY
+- Fix URL redirects through surge
+- Edit on show page
+
+
+EDIT PROBLEM
+- router.put not going through. doesn't work on postman
+- weird URL getting huge?
+- 

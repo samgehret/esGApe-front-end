@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
-
 class Home extends Component {
   render () {
     return (
-      <div>
-        <div className='title'>
-          <h1>Welcome to EsGApe!</h1>
+
+      <div className='welcome page'>
+        <h1>Welcome to EsGApe!</h1>
+
+        <div className='title' bgcolor='#58b3ff'>
+          <h1 />
           <h3>What are you looking to do?</h3>
         </div>
         <div className='container'>
@@ -32,6 +34,7 @@ class Home extends Component {
             </div>
           </Link>
         </div>
+
       </div>
     )
   }

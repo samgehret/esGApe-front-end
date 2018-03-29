@@ -14,12 +14,8 @@ import LunchSpots from './components/LunchSpots/LunchSpots'
 
 import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
-
-// dependencies not in create-react-app
-import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' // Redirect,
 import axios from 'axios'
-import GoogleMapReact from 'google-map-react'
-
 
 class App extends Component {
   constructor (props) {
@@ -28,8 +24,8 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
-      selectedRestaurant: null,
-      restaurant: []  // restaurant start from [] empty array
+      errorSignup: null,
+      errorLogin: null
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
@@ -47,14 +43,12 @@ class App extends Component {
         isLoggedIn: false
       })
     }
-    console.log(this.state)
   }
 
   handleInput (e) {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state)
   }
 
   handleSignUp (e) {
@@ -62,12 +56,31 @@ class App extends Component {
     axios.post('http://localhost:3002/users/signup', {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
+      localStorage.email = this.state.email
       this.setState({
+        error: null,
         isLoggedIn: true
       })
+      this.props.history.push('/home')
     })
-    localStorage.email = this.state.email
-    window.location.replace('/')
+    .catch(err => {
+      console.log(err)
+      if (err.response) {
+        if (err.response.status === 400) {
+          this.setState({errorSignup: 'Sorry bro, all fields are required'})
+        }
+
+        if (err.response.status === 401) {
+          this.setState({errorSignup: 'Sorry bro, email already taken.'})
+        }
+
+        if (err.response.status === 404) {
+          this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
+        } else {
+          console.log(err)
+        }
+      }
+    })
   }
 
   handleLogIn (e) {
@@ -75,57 +88,52 @@ class App extends Component {
     axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
+      localStorage.email = this.state.email
       this.setState({
+        error: null,
         isLoggedIn: true
       })
-      localStorage.email = this.state.email
-
+      this.props.history.push('/home')
     })
-    window.location.replace('/')
+    .catch(err => {
+      if (err.response.status === 400) {
+        this.setState({errorLogin: 'Sorry bro, all fields are required'})
+      }
+      if (err.response.status === 401) {
+        this.setState({errorLogin: 'Sorry bro, couldnt find this user'})
+      }
+      if (err.response.status === 404) {
+        this.setState({errorLogin: 'Sorry bro, wrong password...'})
+      }
+    })
   }
 
   handleLogOut () {
     this.setState({
       email: '',
       password: '',
-      isLoggedIn: false 
+      isLoggedIn: false
     })
     localStorage.clear()
     window.location.replace('/')
-    console.log('logged out')
   }
   render () {
-  
-    console.log(this.state)
-    const restaurant = {
-      '_id': '5aba77a8952c454828cd34d5',
-      'name': 'Post Pub',
-      'address': '1422 L St NW, Washington, DC 20005',
-      'website': 'https://postpubdc.com/',
-      'drinkPrice': '7',
-      'ambiance': 'A dive bar with subpar service. Expect to wait a long time between server visits.',
-      'description': 'This is by far the closest bar to GA. Its a dive bar with poor service and random happy hour deals every night. Be careful on Friday night there are NO BEERS SPECIALS. Feel like drinks here should be less expensive than they are...',
-      'crowds': 'Fills up for lunch and for happy hour. Can be difficult to find a seat',
-      'distance': '1 block from GA',
-      'deals': 'Friday after work is Absolute drinks for a reduced rate'
-    }
     return (
 
       <div className='app'>
         <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
-            <Route path='/signup' render={() => <SignupForm handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
-            <Route path='/login' render={() => <LoginForm handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
+            <Route path='/signup' render={() => <SignupForm error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
+            <Route path='/login' render={() => <LoginForm error={this.state.errorLogin} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />}/>
-            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />}/>
+            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
+            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />} />
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route exact path='/happyhours' render={() => <HappyHours />} />
             <Route exact path='/happyhours/:id' render={(props) => <HappyHour {...props} />} />
-            <Route
-              path='/*'
+            <Route path='/*'
               render={() => {
                 return (
                   <Redirect to='/home' />
@@ -134,12 +142,10 @@ class App extends Component {
               />
           </Switch>
         </div>
-        <div className='map'>
-           
-        </div>
+        <div className='map' />
       </div>
     )
   }
 }
 
-export default App
+export default withRouter(App)
