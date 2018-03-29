@@ -26,5 +26,11 @@
   nav img {
     height: 50px;
     width: 50px;
-    margin: -30px;
+    animation-name: float;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
   }
+  @keyframes float {
+    50% {padding-top: 20px}
+    }
+    

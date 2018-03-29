@@ -16,9 +16,9 @@ import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
-import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' // Redirect,
 import axios from 'axios'
-//import GoogleMapReact from 'google-map-react'
+// import GoogleMapReact from 'google-map-react'
 
 class App extends Component {
   constructor (props) {
@@ -65,18 +65,6 @@ class App extends Component {
         isLoggedIn: true
       }).then((props)=> this.props.history.push('/home'))
     })
-    // .catch(err => {
-    //   console.log(err)
-    //   if (err.response.status === 400) {
-    //     this.setState({errorSignup: 'Sorry bro, all fields are required'})
-    //   }
-    //   if (err.response.status === 401) {
-    //     this.setState({errorSignup: 'Sorry bro, email already taken.'})
-    //   }
-    //   if (err.response.status === 401) {
-    //     this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
-    //   }
-    // })
   }
 
   handleLogIn (e) {
@@ -84,11 +72,12 @@ class App extends Component {
     axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
+      localStorage.email = this.state.email
       this.setState({
         // error: null,
         isLoggedIn: true
       })
-      localStorage.email = this.state.email
+      this.props.history.push('/home')
     })
     .catch(err => {
       console.log(err)
@@ -102,7 +91,6 @@ class App extends Component {
         this.setState({errorLogin: 'Sorry bro, wrong password...'})
       }
     })
-    // window.location.replace('/')
   }
 
   handleLogOut () {
@@ -146,4 +134,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)

@@ -26,8 +26,10 @@ class Navbar extends Component {
                         <Link className='nav-link' to='/'><h3>esGApe</h3></Link>
                         <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
                         <Link className='nav-link' to='/happyhours'>Happy Hours</Link>
+                        <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
                         <img src="https://image.flaticon.com/icons/svg/235/235830.svg" />
                         <Link className='nav-link' to='/lunchspots'>Lunch Spots</Link>
+                        <img src="https://image.flaticon.com/icons/svg/235/235830.svg" />
                         <Link className='nav-link' to='/newhappyhour'>Add New Happy Hour</Link>
                         <Link className='nav-link' to='/newlunchspot'>Add New Lunch Spot</Link>   
                         <input value="Log Out" type="submit" onClick={this.props.handleLogOut} />
