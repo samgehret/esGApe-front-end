@@ -18,7 +18,7 @@ import HappyHours from './components/HappyHours/HappyHours'
 // dependencies not in create-react-app
 import { Route, Link, Switch, Redirect } from 'react-router-dom' // Redirect,
 import axios from 'axios'
-import GoogleMapReact from 'google-map-react'
+//import GoogleMapReact from 'google-map-react'
 
 class App extends Component {
   constructor (props) {
@@ -116,6 +116,12 @@ class App extends Component {
     console.log('logged out')
   }
   render () {
+<<<<<<< HEAD
+=======
+  
+    console.log(this.state)
+
+>>>>>>> develop
     return (
 
       <div className='app'>
