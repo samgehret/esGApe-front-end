@@ -82,5 +82,19 @@ Gold
 
 GRANT TODO WEDNESDAY
 - Make it so a login failure / signup failure doesn't redirect to homepage
+- buttons only show when author === localStorage.email
+- 
 
 
+TODO OVERALL
+- Make it so that 'website' renders a clickable URL on show view
+- Make stuff look better
+- Logo in top left
+- make Navbar stretch to whole page
+- color on form text
+- Animation on mouseover for nav items
+- After deployment, check URL's to make sure they all work
+
+GRANT TODO THURDAY
+- Fix URL redirects through surge
+- Edit on show page
