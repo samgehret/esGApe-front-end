@@ -1,6 +1,6 @@
 # PROJECT IDEA
 
-    Our project is esGApe; a portal which allows users to sign in,and create detailed posts concerning the top restaurants and bars in the nearby area. Users can view individual restaurants in a show view, and edit and delete the information on their own posts, as well as comment on the posts of other users. The website also has a map showing the locations of posted restaurants and bars.
+    Our project is esGApe; a portal which allows users to sign in,and create detailed posts concerning the top restaurants and bars in the nearby area. Users can view individual restaurants in a show view, and edit and delete the information on their own posts, as well as comment on the posts of other users.
 
 ## QUESTIONS
 
@@ -66,11 +66,12 @@ TODO OVERALL
 - After deployment, check URL's to make sure they all work
 - sort comments and lunchspot / happyhour list view in reverse order
 GRANT TODO THURDAY
-- Fix URL redirects through surge
-- Edit on show page
+- Fix URL redirects through surge (if they happen?)
+- Round Images on front page.
+- icons in navbar
 
 
-EDIT PROBLEM
-- router.put not going through. doesn't work on postman
-- weird URL getting huge?
-- 
+KNOWN BUGS
+- Login page not redirecting on successful login
+- Comment fields not emptying after successful comment post
+- Edit and Delete not being hidden.

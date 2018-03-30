@@ -14,7 +14,11 @@ import LunchSpots from './components/LunchSpots/LunchSpots'
 
 import LunchSpot from './components/LunchSpots/LunchSpot'
 import HappyHours from './components/HappyHours/HappyHours'
-import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' // Redirect,
+
+// dependencies not in create-react-app
+
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom'
+
 import axios from 'axios'
 
 class App extends Component {
@@ -53,44 +57,47 @@ class App extends Component {
 
   handleSignUp (e) {
     e.preventDefault()
-    axios.post('http://localhost:3002/users/signup', {email: this.state.email, password: this.state.password})
+    var endpoint = ''
+    if (window.location.hostname === 'localhost') {
+      endpoint = 'localhost:3002'
+    } else {
+      endpoint = 'esgape.herokuapp.com'
+    }
+    axios.post(`http://${endpoint}/users/signup`, {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       localStorage.email = this.state.email
       this.setState({
-        error: null,
         isLoggedIn: true
       })
       this.props.history.push('/home')
-    })
-    .catch(err => {
-      console.log(err)
-      if (err.response) {
-        if (err.response.status === 400) {
-          this.setState({errorSignup: 'Sorry bro, all fields are required'})
-        }
-
-        if (err.response.status === 401) {
-          this.setState({errorSignup: 'Sorry bro, email already taken.'})
-        }
-
-        if (err.response.status === 404) {
-          this.setState({errorSignup: 'Sorry bro, something went wrong with our server.'})
-        } else {
-          console.log(err)
-        }
+    }).catch(err => {
+      if (err.response.status === 400) {
+        this.setState({errorSignup: 'Sorry bro, all fields are required'})
+      }
+      if (err.response.status === 401) {
+        this.setState({errorSignup: 'Sorry bro, email already taken'})
+      }
+      if (err.response.status === 404) {
+        this.setState({errorSignup: 'Sorry bro, something went wrong...'})
       }
     })
   }
 
   handleLogIn (e) {
     e.preventDefault()
-    axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
+    var endpoint = ''
+    if (window.location.hostname === 'localhost') {
+      endpoint = 'localhost:3002'
+    } else {
+      endpoint = 'esgape.herokuapp.com'
+    }
+    axios.post(`http://${endpoint}/users/login`, {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       localStorage.email = this.state.email
       this.setState({
-        error: null,
+        // error: null,
         isLoggedIn: true
       })
       this.props.history.push('/home')
@@ -124,11 +131,11 @@ class App extends Component {
         <div className='main'>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
-            <Route path='/signup' render={() => <SignupForm error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
+            <Route path='/signup' render={(props) => <SignupForm {...props} error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm error={this.state.errorLogin} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
-            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />} />
+            <Route path='/newlunchspot' render={(props) => <NewLunchSpotForm {...props} email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
+            <Route path='/newhappyhour' render={(props) => <NewHappyHourForm {...props} email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />} />
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route exact path='/happyhours' render={() => <HappyHours />} />
@@ -142,8 +149,8 @@ class App extends Component {
               />
           </Switch>
         </div>
-        <div className='map' />
       </div>
+
     )
   }
 }

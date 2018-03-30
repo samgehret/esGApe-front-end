@@ -5,11 +5,11 @@ class LoginForm extends Component {
   render () {
     if (this.props.error) {
       return (
-        <div>
-          <h1>Login</h1>
-          <div className='error'>
-            {this.props.error}
-          </div>
+          <div className='form'>
+           <h1>Login</h1>
+            <div className='error'>
+              {this.props.error}
+            </div>
 
           <form>
             <label>Email</label>
@@ -22,7 +22,7 @@ class LoginForm extends Component {
       )
     } else {
       return (
-        <div>
+        <div className='form'>
           <h1>Login</h1>
           <form>
             <label>Email</label>
