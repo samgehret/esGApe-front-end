@@ -93,11 +93,11 @@ class LunchSpot extends Component {
         <div>
           <h1>Individual LunchSpot</h1>
           <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <p>Address: {this.state.info.address}</p>
+          <p>Website: {this.state.info.website}</p>
+          <p>Description: {this.state.info.description}</p>
+          <p>Distance: {this.state.info.distance}</p>
+          <p>Cuisine: {this.state.info.foodType}</p>
           
           <h3>Comments</h3>
           {comments}
@@ -109,11 +109,11 @@ class LunchSpot extends Component {
         <div>
           <h1>Individual LunchSpot</h1>
           <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <p>Address: {this.state.info.address}</p>
+          <p>Website: {this.state.info.website}</p>
+          <p>Description: {this.state.info.description}</p>
+          <p>Distance: {this.state.info.distance}</p>
+          <p>Cuisine: {this.state.info.foodType}</p>
           
           <input onClick={this.handleLunchSpotDelete} type="submit" value="Delete" />
           
