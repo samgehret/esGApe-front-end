@@ -17,8 +17,7 @@ import HappyHours from './components/HappyHours/HappyHours'
 
 // dependencies not in create-react-app
 
-import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom' 
-
+import { Route, Link, Switch, Redirect, withRouter } from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -58,20 +57,32 @@ class App extends Component {
 
   handleSignUp (e) {
     e.preventDefault()
-    axios.post('http://localhost:3002/users/signup', {email: this.state.email, password: this.state.password})
+    var endpoint = ''
+    if (window.location.hostname === 'localhost') {
+      endpoint = 'localhost:3002'
+    } else {
+      endpoint = 'esgape.herokuapp.com'
+    }
+    axios.post(`http://${endpoint}/users/signup`, {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       localStorage.email = this.state.email
       this.setState({
         error: null,
         isLoggedIn: true
-      }).then((props)=> this.props.history.push('/home'))
+      }).then((props) => this.props.history.push('/home'))
     })
   }
 
   handleLogIn (e) {
     e.preventDefault()
-    axios.post('http://localhost:3002/users/login', {email: this.state.email, password: this.state.password})
+    var endpoint = ''
+    if (window.location.hostname === 'localhost') {
+      endpoint = 'localhost:3002'
+    } else {
+      endpoint = 'esgape.herokuapp.com'
+    }
+    axios.post(`http://${endpoint}/users/login`, {email: this.state.email, password: this.state.password})
     .then(response => {
       localStorage.token = response.data.token
       localStorage.email = this.state.email
@@ -104,7 +115,6 @@ class App extends Component {
     window.location.replace('/')
   }
   render () {
- 
     return (
 
       <div className='app'>
@@ -130,7 +140,7 @@ class App extends Component {
           </Switch>
         </div>
       </div>
-    
+
     )
   }
 }

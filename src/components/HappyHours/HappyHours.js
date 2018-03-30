@@ -11,7 +11,13 @@ class HappyHours extends Component {
     }
   }
   componentDidMount () {
-    axios.get('http://localhost:3002/happyhours')
+    var endpoint = ''
+    if (window.location.hostname === 'localhost') {
+      endpoint = 'localhost:3002'
+    } else {
+      endpoint = 'esgape.herokuapp.com'
+    }
+    axios.get(`http://${endpoint}/happyhours`)
       .then((res) => {
         this.setState({happyhours: res.data})
         console.log(res.data)
