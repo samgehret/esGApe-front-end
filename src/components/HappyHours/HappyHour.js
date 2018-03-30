@@ -104,7 +104,7 @@ class HappyHour extends Component {
       description: this.state.editHappyHourDescription,
       distance: this.state.editHappyHourDistance,
       foodType: this.state.editHappyHourFoodType
-    }).then((this.history.push('/happyhours')))
+    }).then((this.props.history.push('/happyhours')))
   }
   render (props) {
     var comments = this.state.comments.map((comment, i) => {
@@ -119,12 +119,12 @@ class HappyHour extends Component {
       return (
         <div>
           <h1>Individual HappyHour</h1>
-          <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <h2>{this.state.editHappyHourName}</h2>
+          <p>{this.state.editHappyHourAddress}</p>
+          <p>{this.state.editHappyHourWebsite}</p>
+          <p>{this.state.editHappyHourDescription}</p>
+          <p>{this.state.editHappyHourDistance}</p>
+          <p>{this.state.editHappyHourFoodType}</p>
 
           <h3>Comments</h3>
           {comments}
@@ -135,12 +135,12 @@ class HappyHour extends Component {
       return (
         <div>
           <h1>Individual HappyHour</h1>
-          <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <h2>{this.state.editHappyHourName}</h2>
+          <p>{this.state.editHappyHourAddress}</p>
+          <p>{this.state.editHappyHourWebsite}</p>
+          <p>{this.state.editHappyHourDescription}</p>
+          <p>{this.state.editHappyHourDistance}</p>
+          <p>{this.state.editHappyHourFoodType}</p>
 
           <input onClick={this.handleHappyHourDelete} type='submit' value='Delete' />
 
