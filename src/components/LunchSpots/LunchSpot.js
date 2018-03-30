@@ -9,7 +9,7 @@ class LunchSpot extends Component {
       info: {},
       comments: [],
       comment: '',
-
+      email: '',
       editLunchSpotName: '',
       editLunchSpotAddress: '',
       editLunchSpotWebsite:'',
@@ -26,6 +26,10 @@ class LunchSpot extends Component {
   }
   componentDidMount () {
     this.getInfo()
+    this.setState({
+      email: localStorage.email
+  })
+  console.log(this.state.email)
   }
 
   getInfo () {
@@ -75,6 +79,7 @@ class LunchSpot extends Component {
       foodType: this.state.editLunchSpotFoodType
     })
   }
+
   render (props) {
     var comments = this.state.comments.map((comment, i) => {
       return (
@@ -83,41 +88,61 @@ class LunchSpot extends Component {
         </div>
       )
     })
-    return (
-      <div>
-        <h1>Individual LunchSpot</h1>
-        <h2>{this.state.info.name}</h2>
-        <p>{this.state.info.address}</p>
-        <p>{this.state.info.website}</p>
-        <p>{this.state.info.description}</p>
-        <p>{this.state.info.distance}</p>
-        <p>{this.state.info.foodType}</p>
-        
-        <input onClick={this.handleLunchSpotDelete} type="submit" value="Delete" />
-        
-        <h3>Comments</h3>
-        {comments}
-        <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
-
-        <h2>Edit LunchSpot</h2>
-        <form onSubmit={this.handleLunchSpotEdit}>
-          <label>Name</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotName" />
-          <label>Address</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotAddress" />
-          <label>Website</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotWebsite" />
-          <label>Description</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotDescription" />
-          <label>Distance</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotDistance" />
-          <label>Food Type</label>
-          <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotFoodType" />
-          <input value="submit" type="submit" />
-      </form>
-      </div>
-    )
+    if ( this.state.email !== this.state.info.author) {
+      return (
+        <div>
+          <h1>Individual LunchSpot</h1>
+          <h2>{this.state.info.name}</h2>
+          <p>{this.state.info.address}</p>
+          <p>{this.state.info.website}</p>
+          <p>{this.state.info.description}</p>
+          <p>{this.state.info.distance}</p>
+          <p>{this.state.info.foodType}</p>
+          
+          <h3>Comments</h3>
+          {comments}
+          <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>Individual LunchSpot</h1>
+          <h2>{this.state.info.name}</h2>
+          <p>{this.state.info.address}</p>
+          <p>{this.state.info.website}</p>
+          <p>{this.state.info.description}</p>
+          <p>{this.state.info.distance}</p>
+          <p>{this.state.info.foodType}</p>
+          
+          <input onClick={this.handleLunchSpotDelete} type="submit" value="Delete" />
+          
+          <h3>Comments</h3>
+          {comments}
+          <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
+  
+          <h2>Edit LunchSpot</h2>
+          <form onSubmit={this.handleLunchSpotEdit}>
+            <label>Name</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotName" />
+            <label>Address</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotAddress" />
+            <label>Website</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotWebsite" />
+            <label>Description</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotDescription" />
+            <label>Distance</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotDistance" />
+            <label>Food Type</label>
+            <input onChange={this.handleLunchSpotInput} type="text" name="editLunchSpotFoodType" />
+            <input value="submit" type="submit" />
+        </form>
+        </div>
+      )
+    }
+    
   }
+
 }
 
 export default LunchSpot

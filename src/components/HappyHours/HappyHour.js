@@ -9,7 +9,7 @@ class HappyHour extends Component {
       info: {},
       comments: [],
       comment:'',
-
+      email: '',
       editHappyHourName: '',
       editHappyHourAddress: '',
       editHappyHourWebsite:'',
@@ -27,6 +27,10 @@ class HappyHour extends Component {
 
   componentDidMount () {
     this.getInfo()
+    this.setState({
+      email: localStorage.email
+  })
+  console.log(this.state.email)
   }
 
   getInfo () {
@@ -84,41 +88,86 @@ class HappyHour extends Component {
           </div>
         )
       })
-      return (
-        <div>
-          <h1>Individual HappyHour</h1>
-          <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
-          
-          <input onClick={this.handleHappyHourDelete} type="submit" value="Delete" />
-          
-          <h3>Comments</h3>
-          {comments}
-          <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
-  
-          <h2>Edit HappyHour</h2>
-          <form onSubmit={this.handleHappyHourEdit}>
-            <label>Name</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourName" />
-            <label>Address</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourAddress" />
-            <label>Website</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourWebsite" />
-            <label>Description</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourDescription" />
-            <label>Distance</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourDistance" />
-            <label>Food Type</label>
-            <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourFoodType" />
-            <input value="submit" type="submit" />
-        </form>
-        </div>
-      )
+
+
+
+
+
+
+if (this.state.email !== this.state.info.author) {
+  return (
+    <div>
+      <h1>Individual HappyHour</h1>
+      <h2>{this.state.info.name}</h2>
+      <p>{this.state.info.address}</p>
+      <p>{this.state.info.website}</p>
+      <p>{this.state.info.description}</p>
+      <p>{this.state.info.distance}</p>
+      <p>{this.state.info.foodType}</p>
+      
+      <h3>Comments</h3>
+      {comments}
+      <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
+    </div>
+  )
+} else {
+  return (
+    <div>
+      <h1>Individual HappyHour</h1>
+      <h2>{this.state.info.name}</h2>
+      <p>{this.state.info.address}</p>
+      <p>{this.state.info.website}</p>
+      <p>{this.state.info.description}</p>
+      <p>{this.state.info.distance}</p>
+      <p>{this.state.info.foodType}</p>
+      
+      <input onClick={this.handleHappyHourDelete} type="submit" value="Delete" />
+      
+      <h3>Comments</h3>
+      {comments}
+      <Comment handleComment={this.handleComment} submitComment={this.submitComment} />
+
+      <h2>Edit HappyHour</h2>
+      <form onSubmit={this.handleHappyHourEdit}>
+        <label>Name</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourName" />
+        <label>Address</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourAddress" />
+        <label>Website</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourWebsite" />
+        <label>Description</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourDescription" />
+        <label>Distance</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourDistance" />
+        <label>Food Type</label>
+        <input onChange={this.handleHappyHourInput} type="text" name="editHappyHourFoodType" />
+        <input value="submit" type="submit" />
+    </form>
+    </div>
+  )
+}
+      
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
   }
 
 export default HappyHour

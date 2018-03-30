@@ -14,8 +14,12 @@ class Navbar extends Component {
                         <Link className='nav-link' to='/'>esGApe</Link>
                         <Link className='nav-link' to='/signup'>Signup</Link>
                         <Link className='nav-link' to='/login'>Login</Link>
-                        <Link className='nav-link' to='/lunchspots'>Lunch Spots</Link>
-                        <Link className='nav-link' to='/happyhours'>Happy Hours</Link>       
+                        <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
+                        <Link className='nav-link wine' to='/happyhours'>Happy Hours</Link>
+                        <img src="https://image.flaticon.com/icons/svg/168/168570.svg" />
+                        <img src="https://image.flaticon.com/icons/svg/235/235830.svg" />
+                        <Link className='nav-link plate' to='/lunchspots'>Lunch Spots</Link>
+                        <img src="https://image.flaticon.com/icons/svg/235/235830.svg" />      
                     </nav>  
                 </div>
                 )
