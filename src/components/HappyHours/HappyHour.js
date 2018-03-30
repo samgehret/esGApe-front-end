@@ -80,7 +80,7 @@ class HappyHour extends Component {
       endpoint = 'esgape.herokuapp.com'
     }
     axios.delete(`http://${endpoint}/happyhours/${this.state.info._id}`)
-      .then(window.location.replace('http://localhost:3000/happyhours/'))
+      .then(this.props.history.push('/home'))
   }
   handleHappyHourInput (e) {
     this.setState({

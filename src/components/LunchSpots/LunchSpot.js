@@ -79,7 +79,7 @@ class LunchSpot extends Component {
       endpoint = 'esgape.herokuapp.com'
     }
     axios.delete(`http://${endpoint}/lunchspots/${this.state.info._id}`)
-    .then(this.props.history.push('/lunchspots'))
+    .then(this.props.history.push('/home'))
   }
   handleLunchSpotInput (e) {
     this.setState({
