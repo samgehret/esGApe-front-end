@@ -104,7 +104,7 @@ class HappyHour extends Component {
       description: this.state.editHappyHourDescription,
       distance: this.state.editHappyHourDistance,
       foodType: this.state.editHappyHourFoodType
-    }).then((this.props.history.push('/happyhours')))
+    }).then((this.props.history.push('/home')))
   }
   render (props) {
     var comments = this.state.comments.map((comment, i) => {

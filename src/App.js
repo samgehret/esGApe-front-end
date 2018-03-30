@@ -70,7 +70,18 @@ class App extends Component {
       this.setState({
         error: null,
         isLoggedIn: true
-      }).then((props) => this.props.history.push('/home'))
+      })
+      this.props.history.push('/home')
+    }).catch(err => {
+      if (err.response.status === 400) {
+        this.setState({errorLogin: 'Sorry bro, all fields are required'})
+      }
+      if (err.response.status === 401) {
+        this.setState({errorLogin: 'Sorry bro, email already taken'})
+      }
+      if (err.response.status === 404) {
+        this.setState({errorLogin: 'Sorry bro, something went wrong...'})
+      }
     })
   }
 

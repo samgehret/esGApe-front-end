@@ -103,7 +103,7 @@ class LunchSpot extends Component {
       description: this.state.editLunchSpotDescription,
       distance: this.state.editLunchSpotDistance,
       foodType: this.state.editLunchSpotFoodType
-    }).then((this.history.push('/lunchspots')))
+    }).then((this.props.history.push('/home')))
   }
 
   render (props) {
@@ -118,12 +118,12 @@ class LunchSpot extends Component {
       return (
         <div>
           <h1>Individual LunchSpot</h1>
-          <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <h2>{this.state.editLunchSpotName}</h2>
+          <p>{this.state.editLunchSpotAddress}</p>
+          <p>{this.state.editLunchSpotWebsite}</p>
+          <p>{this.state.editLunchSpotDescription}</p>
+          <p>{this.state.editLunchSpotDistance}</p>
+          <p>{this.state.editLunchSpotFoodType}</p>
 
           <h3>Comments</h3>
           {comments}
@@ -134,12 +134,12 @@ class LunchSpot extends Component {
       return (
         <div>
           <h1>Individual LunchSpot</h1>
-          <h2>{this.state.info.name}</h2>
-          <p>{this.state.info.address}</p>
-          <p>{this.state.info.website}</p>
-          <p>{this.state.info.description}</p>
-          <p>{this.state.info.distance}</p>
-          <p>{this.state.info.foodType}</p>
+          <h2>{this.state.editLunchSpotName}</h2>
+          <p>{this.state.editLunchSpotAddress}</p>
+          <p>{this.state.editLunchSpotWebsite}</p>
+          <p>{this.state.editLunchSpotDescription}</p>
+          <p>{this.state.editLunchSpotDistance}</p>
+          <p>{this.state.editLunchSpotFoodType}</p>
 
           <input onClick={this.handleLunchSpotDelete} type='submit' value='Delete' />
 
