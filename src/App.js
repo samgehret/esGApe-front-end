@@ -124,8 +124,8 @@ class App extends Component {
             <Route path='/signup' render={(props) => <SignupForm {...props} error={this.state.errorSignup} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />} />
             <Route path='/login' render={() => <LoginForm error={this.state.errorLogin} handleInput={this.handleInput} handleLogIn={this.handleLogIn} />} />
             <Route path='/home' render={() => <Home />} />
-            <Route path='/newlunchspot' render={() => <NewLunchSpotForm email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
-            <Route path='/newhappyhour' render={() => <NewHappyHourForm email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />} />
+            <Route path='/newlunchspot' render={(props) => <NewLunchSpotForm {...props} email={this.state.email} handleNewLunchSpotInput={this.handleNewLunchSpotInput} />} />
+            <Route path='/newhappyhour' render={(props) => <NewHappyHourForm {...props} email={this.state.email} handleNewHappyHourInput={this.handleNewHappyHourInput} />} />
             <Route exact path='/lunchspots' render={() => <LunchSpots />} />
             <Route exact path='/lunchspots/:id' render={(props) => <LunchSpot {...props} />} />
             <Route exact path='/happyhours' render={() => <HappyHours />} />

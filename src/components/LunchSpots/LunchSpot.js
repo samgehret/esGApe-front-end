@@ -102,7 +102,7 @@ class LunchSpot extends Component {
       description: this.state.editLunchSpotDescription,
       distance: this.state.editLunchSpotDistance,
       foodType: this.state.editLunchSpotFoodType
-    })
+    }).then((this.history.push('/lunchspots')))
   }
 
   render (props) {
