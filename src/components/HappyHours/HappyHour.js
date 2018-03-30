@@ -34,7 +34,6 @@ class HappyHour extends Component {
   }
 
   getInfo (e) {
-    e.preventDefault()
     var endpoint = ''
     if (window.location.hostname === 'localhost') {
       endpoint = 'localhost:3002'
