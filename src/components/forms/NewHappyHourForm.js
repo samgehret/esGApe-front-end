@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import './forms.css'
+
 class NewHappyHourForm extends Component {
     constructor(props) {
         super(props)
@@ -40,7 +42,7 @@ class NewHappyHourForm extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='form'>
                 <h1>Submit New Happy Hour</h1>
                 <form action='/happyhours' onSubmit={this.handleNewHappyHourSubmit}>
                     <label>Name</label>

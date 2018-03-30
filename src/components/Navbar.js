@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Route, Link, Redirect, Switch } from 'react-router-dom'
 import './Navbar.css'
 
+
 class Navbar extends Component {
-    render() {
+  render () {
         // this code could be a LOT cleaner
         // This if statement makes it so that it only renders certain nav
         // options when the user is logged in
+
         if (this.props.isLoggedIn === false) {
             return (
                 <div>
@@ -42,6 +44,6 @@ class Navbar extends Component {
             )
         }
     }
-}
+  }
 
-export default Navbar;
+export default Navbar
