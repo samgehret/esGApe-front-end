@@ -24,7 +24,8 @@ class NewHappyHourForm extends Component {
       [e.target.name]: e.target.value
     })
   }
-  handleNewHappyHourSubmit () {
+  handleNewHappyHourSubmit (e) {
+    e.preventDefault()
     var endpoint = ''
     if (window.location.hostname === 'localhost') {
       endpoint = 'localhost:3002'
@@ -39,7 +40,7 @@ class NewHappyHourForm extends Component {
       distance: this.state.newHappyHourDistance,
       foodType: this.state.newHappyHourFoodType,
       author: this.state.email
-    }).then((this.history.push('/happyhours')))
+    }).then(console.log('working'))
   }
   componentWillMount () {
     this.setState({
