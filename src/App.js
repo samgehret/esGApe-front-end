@@ -68,19 +68,18 @@ class App extends Component {
       localStorage.token = response.data.token
       localStorage.email = this.state.email
       this.setState({
-        error: null,
         isLoggedIn: true
       })
       this.props.history.push('/home')
     }).catch(err => {
       if (err.response.status === 400) {
-        this.setState({errorLogin: 'Sorry bro, all fields are required'})
+        this.setState({errorSignup: 'Sorry bro, all fields are required'})
       }
       if (err.response.status === 401) {
-        this.setState({errorLogin: 'Sorry bro, email already taken'})
+        this.setState({errorSignup: 'Sorry bro, email already taken'})
       }
       if (err.response.status === 404) {
-        this.setState({errorLogin: 'Sorry bro, something went wrong...'})
+        this.setState({errorSignup: 'Sorry bro, something went wrong...'})
       }
     })
   }
