@@ -33,7 +33,8 @@ class HappyHour extends Component {
     console.log(this.state.email)
   }
 
-  getInfo () {
+  getInfo (e) {
+    e.preventDefault()
     var endpoint = ''
     if (window.location.hostname === 'localhost') {
       endpoint = 'localhost:3002'
@@ -89,7 +90,8 @@ class HappyHour extends Component {
     console.log(this.state.info._id)
   }
 
-  handleHappyHourEdit () {
+  handleHappyHourEdit (e) {
+    e.preventDefault()
     var endpoint = ''
     if (window.location.hostname === 'localhost') {
       endpoint = 'localhost:3002'

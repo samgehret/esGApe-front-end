@@ -25,7 +25,8 @@ class NewLunchSpotForm extends Component {
       [e.target.name]: e.target.value
     })
   }
-  handleNewLunchSpotSubmit () {
+  handleNewLunchSpotSubmit (e) {
+    e.preventDefault()
     var endpoint = ''
     if (window.location.hostname === 'localhost') {
       endpoint = 'localhost:3002'
