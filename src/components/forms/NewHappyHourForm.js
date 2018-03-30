@@ -40,7 +40,7 @@ class NewHappyHourForm extends Component {
       distance: this.state.newHappyHourDistance,
       foodType: this.state.newHappyHourFoodType,
       author: this.state.email
-    }).then(this.props.history.push('/happyhours'))
+    }).then(this.props.history.push('/home'))
   }
   componentWillMount () {
     this.setState({

@@ -41,7 +41,7 @@ class NewLunchSpotForm extends Component {
       distance: this.state.newLunchSpotDistance,
       foodType: this.state.newLunchSpotFoodType,
       author: this.state.email
-    })
+    }).then(this.props.history.push('/home'))
   }
   componentWillMount () {
     this.setState({
