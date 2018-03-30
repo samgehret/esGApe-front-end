@@ -35,7 +35,6 @@ class Home extends Component {
             </Link>
         </div>
       </div>
-    </div>
     )
   }
 }

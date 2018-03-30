@@ -4,7 +4,7 @@ import './forms.css'
 class SignupForm extends Component {
   render () {
     return (
-      <div classNAme ='form'>
+      <div className='form'>
         <h1>Sign Up</h1>
         {this.props.error && (
         <div className='error'>
