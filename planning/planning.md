@@ -1,6 +1,6 @@
 # PROJECT IDEA
 
-    Our project is esGApe; a portal which allows users to sign in,and create detailed posts concerning the top restaurants and bars in the nearby area. Users can view individual restaurants in a show view, and edit and delete the information on their own posts, as well as comment on the posts of other users. The website also has a map showing the locations of posted restaurants and bars.
+    Our project is esGApe; a portal which allows users to sign in,and create detailed posts concerning the top restaurants and bars in the nearby area. Users can view individual restaurants in a show view, and edit and delete the information on their own posts, as well as comment on the posts of other users.
 
 ## QUESTIONS
 
